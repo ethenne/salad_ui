@@ -2,15 +2,14 @@
 // https://tailwindcss.com/docs/configuration
 
 module.exports = {
+  presets: [
+    require("./js/moon-ui-base-preset"),
+    require("./js/moon-components"),
+  ],
   content: [
     "../../../config/*.*exs",
-    "../lib/**/*.ex"
+    "../lib/**/*.ex",
   ],
-  theme: {
-    extend: {
-      colors: require("./tailwind.colors.json"),
-    },
-  },
   plugins: [
     require("@tailwindcss/forms"),
     require("@tailwindcss/typography"),

@@ -244,7 +244,7 @@ defmodule SaladUI.Sidebar do
       data-sidebar="input"
       class={
         classes([
-          "h-8 w-full bg-background shadow-none focus-visible:ring-2 focus-visible:ring-sidebar-ring",
+          "h-8 w-full bg-primary shadow-none focus-visible:ring-2 focus-visible:ring-sidebar-ring",
           @class
         ])
       }

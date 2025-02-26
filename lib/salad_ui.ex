@@ -34,6 +34,7 @@ defmodule SaladUI do
       import SaladUI.Card
       import SaladUI.Chart
       import SaladUI.Checkbox
+      import SaladUI.Chip
       import SaladUI.Collapsible
       import SaladUI.Dialog
       import SaladUI.DropdownMenu
@@ -49,6 +50,7 @@ defmodule SaladUI do
       import SaladUI.Progress
       import SaladUI.RadioGroup
       import SaladUI.ScrollArea
+      import SaladUI.SegmentedControl
       import SaladUI.Select
       import SaladUI.Separator
       import SaladUI.Sheet

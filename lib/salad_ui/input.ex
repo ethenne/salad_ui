@@ -23,9 +23,9 @@ defmodule SaladUI.Input do
 
   attr :field, Phoenix.HTML.FormField, doc: "a form field struct retrieved from the form, for example: @form[:email]"
 
-  attr :class, :any, default: nil
+  attr :class, :string, default: "moon-input"
   attr :rest, :global, include: ~w(accept autocomplete capture cols disabled form list max maxlength min minlength
-                multiple pattern placeholder readonly required rows size step)
+                multiple pattern placeholder readonly required rows size step options)
 
   def input(assigns) do
     assigns = prepare_assign(assigns)
@@ -36,15 +36,7 @@ defmodule SaladUI.Input do
     assigns = assign(assigns, :rest, rest)
 
     ~H"""
-    <input
-      class={
-        classes([
-          "flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
-          @class
-        ])
-      }
-      {@rest}
-    />
+    <input class={classes(@class)} {@rest} />
     """
   end
 end

@@ -66,7 +66,7 @@ defmodule SaladUI.MixProject do
       {:styler, "~> 0.7", only: [:dev, :test], runtime: false},
       {:ex_doc, "~> 0.24", only: [:dev, :test], runtime: false},
       {:excoveralls, "~> 0.10", only: [:dev, :test], runtime: false},
-      {:tailwind, "~> 0.2", only: [:dev, :test], runtime: Mix.env() == :dev}
+      {:tailwind, "~> 0.2.4", only: [:dev, :test], runtime: Mix.env() == :dev}
     ]
   end
 
