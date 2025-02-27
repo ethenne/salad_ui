@@ -56,7 +56,7 @@ defmodule SaladUI.Input do
         {@label}
       </label>
       <input class={classes(["moon-input", @class])} {@rest} disabled={@disabled} />
-      <.hint hint={@hint} error={@error} disabled={@disabled} class="moon-form-hint" />
+      <.hint hint={@hint} error={@error} disabled={@disabled} />
     </div>
     """
   end
@@ -64,7 +64,7 @@ defmodule SaladUI.Input do
   defp hint(assigns) do
     ~H"""
     <%= for hint <- @hint do %>
-      <p role="alert">
+      <p role="alert" class="moon-form-hint">
         {render_slot(hint)}
       </p>
     <% end %>
