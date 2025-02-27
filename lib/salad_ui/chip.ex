@@ -9,17 +9,20 @@ defmodule SaladUI.Chip do
 
       <.chip value="true" size="sm" variant="outline">Bold</.chip>
   """
-  attr :id, :any, default: nil
-  attr :name, :any, default: nil
-  attr :field, Phoenix.HTML.FormField, doc: "a form field struct retrieved from the form, for example: @form[:email]"
+  attr :id, :string, default: nil, doc: "An id for chip element"
+  attr :name, :string, default: nil, doc: "A name for chip element"
+
+  attr :field, Phoenix.HTML.FormField,
+    default: nil,
+    doc: "A form field struct retrieved from the form, for example: @form[:email]"
 
   attr :value, :boolean, default: false
   attr :"default-value", :any, values: [true, false, "true", "false"], default: false
 
   attr :disabled, :boolean, default: false
-  attr :variant, :string, values: ~w(default outline), default: "default"
-  attr :size, :string, values: ~w(default sm lg), default: "default"
-  attr :class, :string, default: "moon-chip"
+  attr :variant, :string, values: ~w(ghost outline), default: "outline"
+  attr :size, :string, values: ~w(sm md), default: "md"
+  attr :class, :string, default: ""
   attr :rest, :global
   slot :inner_block, required: true
 
@@ -39,7 +42,7 @@ defmodule SaladUI.Chip do
       type="button"
       class={
         classes([
-          "inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors hover:bg-muted hover:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 has-[:checked]:moon-chip-selected has-[:checked]:text-accent-foreground",
+          "moon-chip has-[:checked]:moon-chip-selected",
           @variant_class,
           @class
         ])
@@ -62,19 +65,18 @@ defmodule SaladUI.Chip do
 
   @variants %{
     variant: %{
-      "default" => "bg-transparent",
-      "outline" => "border border-input bg-transparent hover:bg-accent hover:text-accent-foreground"
+      "ghost" => "moon-chip-ghost",
+      "outline" => ""
     },
     size: %{
-      "default" => "h-10 px-3",
-      "sm" => "h-9 px-2.5",
-      "lg" => "h-11 px-5"
+      "sm" => "moon-chip-sm",
+      "md" => ""
     }
   }
 
   @default_variants %{
-    variant: "default",
-    size: "default"
+    variant: "outline",
+    size: "md"
   }
 
   defp variant(props) do

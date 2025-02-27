@@ -27,4 +27,10 @@ defmodule SaladUI.Icon do
     <span class={[@name, @class]}></span>
     """
   end
+
+  def icon(assigns) do
+    ~H"""
+    {MoonAssets.icon(assigns)}
+    """
+  end
 end

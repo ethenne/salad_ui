@@ -94,6 +94,27 @@ defmodule SaladUI.Button do
     """
   end
 
+  defp render_button_content(%{end_icon: true, svg: svg, inner_block: inner_block, label: label} = assigns)
+       when is_list(svg) and length(svg) > 0 do
+    ~H"""
+    <%= if label do %>
+      {@label}
+    <% else %>
+      {render_slot(inner_block)}
+    <% end %>
+    <%= if is_list(@svg) and length(@svg) > 0 do %>
+      {render_slot(@svg)}
+    <% end %>
+    """
+  end
+
+  defp render_button_content(%{end_icon: true, inner_block: inner_block} = assigns) do
+    ~H"""
+    {render_slot(inner_block)}
+    <span class="hero-moonui" />
+    """
+  end
+
   defp render_button_content(%{inner_block: inner_block} = assigns) do
     ~H"{render_slot(inner_block)}"
   end

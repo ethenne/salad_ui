@@ -8,17 +8,17 @@ defmodule SaladUI.SegmentedControl do
 
   ## Example:
 
-    <.toggle_group name="style" type="single" value="bold">
-      <.toggle_group_item value="bold" builder={builder} aria-label="Toggle bold">
+    <.segmented_control name="style" type="single" value="bold">
+      <.segmented_control_item value="bold" builder={builder} aria-label="Toggle bold">
         <.icon name="hero-bold" class="h-4 w-4" />
-      </.toggle_group_item>
-      <.toggle_group_item value="italic" builder={builder} aria-label="Toggle italic">
+      </.segmented_control_item>
+      <.segmented_control_item value="italic" builder={builder} aria-label="Toggle italic">
         <.icon name="hero-italic" class="h-4 w-4" />
-      </.toggle_group_item>
-      <.toggle_group_item value="underline" builder={builder} aria-label="Toggle underline">
+      </.segmented_control_item>
+      <.segmented_control_item value="underline" builder={builder} aria-label="Toggle underline">
         <.icon name="hero-underline" class="h-4 w-4" />
-      </.toggle_group_item>
-    </.toggle_group>
+      </.segmented_control_item>
+    </.segmented_control>
   """
   attr :name, :string, default: nil
   attr :multiple, :any, values: [true, false, "true", "false"], default: false
@@ -56,10 +56,10 @@ defmodule SaladUI.SegmentedControl do
   defp ensure_valid_value_type!(%{value: value, multiple: multiple} = _assigns) do
     cond do
       multiple and not is_list(value) ->
-        raise ArgumentError, "The value of the toggle group must be a list for multiple type."
+        raise ArgumentError, "The value of the segmented control must be a list for multiple type."
 
       not multiple and not (is_nil(value) or is_binary(value)) ->
-        raise ArgumentError, "The value of the toggle group must be a single value for single type."
+        raise ArgumentError, "The value of the segmented control must be a single value for single type."
 
       true ->
         nil
@@ -69,7 +69,7 @@ defmodule SaladUI.SegmentedControl do
   attr :class, :string, default: nil
   attr :disabled, :boolean, default: false
   attr :value, :string, default: nil
-  attr :builder, :map, required: true, doc: "The builder context of toggle group."
+  attr :builder, :map, required: true, doc: "The builder context of segmented control."
   attr :rest, :global
   slot :inner_block
 

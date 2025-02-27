@@ -60,13 +60,14 @@ defmodule SaladUI.MixProject do
   defp deps do
     [
       {:tw_merge, "~> 0.1"},
-      {:phoenix_live_view, "~> 1.0"},
+      {:phoenix_live_view, "~> 1.0", override: true},
       {:mix_test_watch, "~> 1.2", only: [:dev, :test]},
       {:credo, "~> 1.6", only: [:dev, :test], runtime: false},
       {:styler, "~> 0.7", only: [:dev, :test], runtime: false},
       {:ex_doc, "~> 0.24", only: [:dev, :test], runtime: false},
       {:excoveralls, "~> 0.10", only: [:dev, :test], runtime: false},
-      {:tailwind, "~> 0.2.4", only: [:dev, :test], runtime: Mix.env() == :dev}
+      {:tailwind, "~> 0.2.4", only: [:dev, :test], runtime: Mix.env() == :dev},
+      {:moon_assets, "~> 0.8.6-lv1.0", organization: "coingaming"}
     ]
   end
 

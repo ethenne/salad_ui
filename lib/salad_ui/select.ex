@@ -36,7 +36,7 @@ defmodule SaladUI.Select do
 
   def select(assigns) do
     ~H"""
-    <div class="moon-form-group">
+    <div class={classes(["moon-form-group", @error && "moon-form-group-error"])}>
       <label :if={@label} for={@id}>
         {@label}
       </label>
@@ -53,7 +53,7 @@ defmodule SaladUI.Select do
           {render_slot(@inner_block)}
         </select>
       </span>
-      <.hint hint={@hint} error={@error} disabled={@disabled} class="moon-form-hint" />
+      <.hint hint={@hint} error={@error} disabled={@disabled} />
     </div>
     """
   end
@@ -61,7 +61,7 @@ defmodule SaladUI.Select do
   defp hint(assigns) do
     ~H"""
     <%= for hint <- @hint do %>
-      <p role="alert">
+      <p role="alert" class="moon-form-hint">
         {render_slot(hint)}
       </p>
     <% end %>
