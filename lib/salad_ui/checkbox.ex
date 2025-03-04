@@ -6,7 +6,7 @@ defmodule SaladUI.Checkbox do
   Implement checkbox input component
 
   ## Examples:
-      <.checkbox class="!border-destructive" name="agree" value={true} />
+      <.checkbox name="agree" value={true} />
   """
   attr :name, :any, default: nil
   attr :value, :any, default: nil
@@ -25,10 +25,11 @@ defmodule SaladUI.Checkbox do
     ~H"""
     <input type="hidden" name={@name} value="false" />
     <input
+      id="moon-checkbox"
       type="checkbox"
       class={
         classes([
-          "peer h-4 w-4 shrink-0 rounded-sm border border-primary shadow focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 checked:bg-primary checked:focus:bg-primary checked:hover:bg-primary checked:text-primary-foreground",
+          "moon-checkbox",
           @class
         ])
       }

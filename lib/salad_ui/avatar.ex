@@ -8,10 +8,7 @@ defmodule SaladUI.Avatar do
 
   def avatar(assigns) do
     ~H"""
-    <span
-      class={classes(["relative h-10 w-10 shrink-0 overflow-hidden rounded-full", @class])}
-      {@rest}
-    >
+    <span class={classes(["moon-avatar", @class])} {@rest}>
       {render_slot(@inner_block)}
     </span>
     """
@@ -23,7 +20,7 @@ defmodule SaladUI.Avatar do
   def avatar_image(assigns) do
     ~H"""
     <img
-      class={classes(["aspect-square h-full w-full", @class])}
+      class={classes(["", @class])}
       {@rest}
       phx-update="ignore"
       style="display:none"
@@ -38,12 +35,7 @@ defmodule SaladUI.Avatar do
 
   def avatar_fallback(assigns) do
     ~H"""
-    <span
-      class={
-        classes(["flex h-full w-full items-center justify-center rounded-full bg-muted", @class])
-      }
-      {@rest}
-    >
+    <span class={classes(["", @class])} {@rest}>
       {render_slot(@inner_block)}
     </span>
     """

@@ -48,6 +48,7 @@ defmodule SaladUI do
       import SaladUI.Pagination
       import SaladUI.Popover
       import SaladUI.Progress
+      import SaladUI.Radio
       import SaladUI.RadioGroup
       import SaladUI.ScrollArea
       import SaladUI.SegmentedControl

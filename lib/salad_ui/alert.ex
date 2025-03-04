@@ -19,8 +19,6 @@ defmodule SaladUI.Alert do
   attr :rest, :global, default: %{}
 
   def alert(assigns) do
-    assigns = assign(assigns, :variant_class, variant(assigns))
-
     ~H"""
     <div
       class={
@@ -64,40 +62,41 @@ defmodule SaladUI.Alert do
   Render alert description
   """
   attr :class, :string, default: nil
+  attr :variant, :string, default: "neutral", values: ~w(positive negative neutral caution info discovery)
   attr :rest, :global, include: ~w(disabled form name value)
-  slot :inner_block, required: true
+  slot :title, required: true
+  slot :content, required: true
 
   def alert_description(assigns) do
     ~H"""
     <div
       class={
         classes([
-          "text-sm [&_p]:leading-relaxed",
+          "moon-alert",
           @class
         ])
       }
       {@rest}
     >
-      {render_slot(@inner_block)}
+      {render_alert_content(assigns)}
     </div>
     """
   end
 
-  @variants %{
-    variant: %{
-      "default" => "bg-background text-foreground",
-      "destructive" =>
-        "bg-background border-destructive/50 text-destructive dark:border-destructive [&>span]:text-destructive"
-    }
-  }
+  defp render_alert_content(%{content: content} = assigns) when not content do
+    ~H"""
+    <span class="title">{@title}</span>
+    """
+  end
 
-  @default_variants %{
-    variant: "default"
-  }
-
-  defp variant(variants) do
-    variants = Map.merge(@default_variants, variants)
-
-    Enum.map_join(variants, " ", fn {key, value} -> @variants[key][value] end)
+  defp render_alert_content(assigns) do
+    ~H"""
+    <div>
+      <div class="title-wrapper">
+        <span class="title">{@title}</span>
+      </div>
+      <p class="tcontent">{@content}</p>
+    </div>
+    """
   end
 end

@@ -47,7 +47,7 @@ defmodule SaladUI.Select do
           disabled={@disabled || @readonly}
           multiple={@multiple}
           aria-label={@label}
-          class="moon-select"
+          class={classes(["moon-select", @error && "moon-select-error"])}
           {@rest}
         >
           {render_slot(@inner_block)}

@@ -17,20 +17,53 @@ defmodule SaladUI.Textarea do
   attr :name, :string, default: nil
   attr :value, :string
   attr :class, :any, default: nil
+  attr :label, :string, default: nil, doc: "The label for the textarea"
+  attr :error, :boolean, default: false, doc: "Set error state for textarea"
+  attr :disabled, :boolean, default: false, doc: "Set disabled state"
+
   attr :rest, :global
 
+  slot(:hint, required: false, doc: "Information or Error massage") do
+    attr(:class, :any, doc: "CSS class for the hint element")
+  end
+
   def textarea(assigns) do
+    assigns = prepare_assign(assigns)
+
+    rest =
+      Map.merge(assigns.rest, Map.take(assigns, [:id, :name, :value, :type]))
+
+    assigns = assign(assigns, :rest, rest)
+
     ~H"""
-    <textarea
-      class={
-        classes([
-          "min-h-[80px] border-input bg-background ring-offset-background flex w-full rounded-md border px-3 py-2 text-sm placeholder:text-muted-foreground focus-visible:ring-ring focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
-          @class
-        ])
-      }
-      {%{id: @id, name: @name}}
-      {@rest}
-    ><%= Phoenix.HTML.Form.normalize_value("textarea", assigns[:value]) %></textarea>
+    <div class={classes(["moon-form-group", @error && "moon-form-group-error"])}>
+      <label :if={@label} for={@id}>
+        {@label}
+      </label>
+
+      <textarea
+        class={
+          classes([
+            "moon-textarea",
+            @class
+          ])
+        }
+        {%{id: @id, name: @name, disabled: @disabled}}
+        {@rest}
+      ><%= Phoenix.HTML.Form.normalize_value("textarea", assigns[:value]) %></textarea>
+
+      <.hint hint={@hint} error={@error} disabled={@disabled} />
+    </div>
+    """
+  end
+
+  defp hint(assigns) do
+    ~H"""
+    <%= for hint <- @hint do %>
+      <p role="alert" class="moon-form-hint">
+        {render_slot(hint)}
+      </p>
+    <% end %>
     """
   end
 end

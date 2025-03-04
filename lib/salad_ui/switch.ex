@@ -23,33 +23,19 @@ defmodule SaladUI.Switch do
       prepare_assign(assigns)
 
     assigns =
-      assign(assigns, :checked, Phoenix.HTML.Form.normalize_value("checkbox", assigns.value))
+      assign_new(assigns, :checked, fn -> Phoenix.HTML.Form.normalize_value("checkbox", assigns.value) end)
 
     ~H"""
-    <button
-      type="button"
-      role="switch"
-      data-state={(@checked && "checked") || "unchecked"}
-      phx-click={toggle(@id)}
-      class={
-        classes([
-          "group/switch inline-flex h-6 w-11 shrink-0 cursor-pointer items-center rounded-full border-2 border-transparent transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary data-[state=unchecked]:bg-input"
-        ])
-      }
+    <input
       id={@id}
-      {%{disabled: @disabled}}
-    >
-      <span class="pointer-events-none block h-5 w-5 rounded-full bg-background shadow-lg ring-0 transition-transform group-data-[state=checked]/switch:translate-x-5 group-data-[state=unchecked]/switch:translate-x-0">
-      </span>
-      <input type="hidden" name={@name} value="false" />
-      <input type="checkbox" class="hidden" name={@name} value="true" {%{checked: @checked}} {@rest} />
-    </button>
+      type="checkbox"
+      class="moon-switch"
+      name={@name}
+      value="true"
+      checked={@checked}
+      disabled={@disabled}
+      {@rest}
+    />
     """
-  end
-
-  defp toggle(id) do
-    %JS{}
-    |> JS.toggle_attribute({"data-state", "checked", "unchecked"})
-    |> JS.dispatch("click", to: "##{id} input[type=checkbox]", bubbles: false)
   end
 end

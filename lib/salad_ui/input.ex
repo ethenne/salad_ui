@@ -14,7 +14,7 @@ defmodule SaladUI.Input do
   attr :id, :string, default: nil, doc: "The id for the input field"
   attr :name, :string, default: nil, doc: "The name for the input field"
   attr :value, :string, default: nil, doc: "The value of the input field"
-  attr :label, :string, doc: "The label for the input field"
+  attr :label, :string, default: nil, doc: "The label for the input field"
   attr :error, :boolean, default: false, doc: "Set error state for input"
   attr :disabled, :boolean, default: false, doc: "Set disabled state"
 

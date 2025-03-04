@@ -50,7 +50,7 @@ defmodule SaladUI.Table do
 
   def table(assigns) do
     ~H"""
-    <table class={classes(["w-full caption-bottom text-sm", @class])} {@rest}>
+    <table class={classes(["moon-table", @class])} {@rest}>
       {render_slot(@inner_block)}
     </table>
     """
@@ -62,7 +62,7 @@ defmodule SaladUI.Table do
 
   def table_header(assigns) do
     ~H"""
-    <thead class={classes(["[&_tr]:border-b", @class])} {@rest}>
+    <thead class={classes(["", @class])} {@rest}>
       {render_slot(@inner_block)}
     </thead>
     """
@@ -77,7 +77,7 @@ defmodule SaladUI.Table do
     <tr
       class={
         classes([
-          "border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted",
+          "",
           @class
         ])
       }
@@ -97,7 +97,7 @@ defmodule SaladUI.Table do
     <th
       class={
         classes([
-          "h-12 px-4 text-left align-middle font-medium text-muted-foreground [&:has([role=checkbox])]:pr-0",
+          "",
           @class
         ])
       }
@@ -114,7 +114,7 @@ defmodule SaladUI.Table do
 
   def table_body(assigns) do
     ~H"""
-    <tbody class={classes(["[&_tr:last-child]:border-0", @class])} {@rest}>
+    <tbody class={classes(["", @class])} {@rest}>
       {render_slot(@inner_block)}
     </tbody>
     """
@@ -126,7 +126,7 @@ defmodule SaladUI.Table do
 
   def table_cell(assigns) do
     ~H"""
-    <td class={classes(["p-4 align-middle [&:has([role=checkbox])]:pr-0", @class])} {@rest}>
+    <td class={classes(["", @class])} {@rest}>
       {render_slot(@inner_block)}
     </td>
     """
@@ -144,7 +144,7 @@ defmodule SaladUI.Table do
     <div
       class={
         classes([
-          "border-t bg-muted/50 font-medium [&>tr]:last:border-b-0",
+          "",
           @class
         ])
       }
@@ -161,7 +161,7 @@ defmodule SaladUI.Table do
 
   def table_caption(assigns) do
     ~H"""
-    <caption class={classes(["mt-4 text-sm text-muted-foreground", @class])} {@rest}>
+    <caption class={classes(["", @class])} {@rest}>
       {render_slot(@inner_block)}
     </caption>
     """

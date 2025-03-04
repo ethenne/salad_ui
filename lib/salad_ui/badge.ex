@@ -13,8 +13,8 @@ defmodule SaladUI.Badge do
   attr :class, :string, default: nil
 
   attr :variant, :string,
-    values: ~w(default secondary destructive outline),
-    default: "default",
+    values: ~w(positive negative info outline),
+    default: "positive",
     doc: "the badge variant style"
 
   attr :rest, :global
@@ -27,7 +27,7 @@ defmodule SaladUI.Badge do
     <div
       class={
         classes([
-          "inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2",
+          "moon-badge",
           @variant_class,
           @class
         ])
@@ -41,15 +41,15 @@ defmodule SaladUI.Badge do
 
   @variants %{
     variant: %{
-      "default" => "border-transparent bg-primary text-primary-foreground hover:bg-primary/80",
-      "secondary" => "border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80",
-      "destructive" => "border-transparent bg-destructive text-destructive-foreground hover:bg-destructive/80",
-      "outline" => "text-foreground"
+      "positive" => "bg-positive hover:bg-primary/80",
+      "negative" => "bg-negative hover:bg-secondary/80",
+      "info" => "bg-info hover:bg-destructive/80",
+      "outline" => "bg-transparent text-primary border border-primary"
     }
   }
 
   @default_variants %{
-    variant: "default"
+    variant: "primary"
   }
 
   defp variant(props) do
