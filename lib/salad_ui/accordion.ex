@@ -38,7 +38,7 @@ defmodule SaladUI.Accordion do
 
   def accordion(assigns) do
     ~H"""
-    <div class={classes(["", @class])}>
+    <div class={classes(["moon-accordion", @class])}>
       {render_slot(@inner_block)}
     </div>
     """
@@ -49,7 +49,7 @@ defmodule SaladUI.Accordion do
 
   def accordion_item(assigns) do
     ~H"""
-    <div class={classes(["moon-accordion", @class])}>
+    <div class={classes(["moon-accordion-item item", @class])}>
       {render_slot(@inner_block)}
     </div>
     """
@@ -65,28 +65,13 @@ defmodule SaladUI.Accordion do
     <details name={@group} class="group/accordion peer/accordion item" open={@open}>
       <summary class={
         classes([
-          "flex flex-1 items-center justify-between py-4 font-medium transition-all hover:underline",
+          "moon-accordion-title list-none cursor-pointer",
           @class
         ])
       }>
         <p class="font-medium">
           {render_slot(@inner_block)}
         </p>
-
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          class="h-4 w-4 shrink-0 transition-transform duration-200 group-open/accordion:rotate-180"
-        >
-          <path d="m6 9 6 6 6-6"></path>
-        </svg>
       </summary>
     </details>
     """
@@ -97,7 +82,7 @@ defmodule SaladUI.Accordion do
 
   def accordion_content(assigns) do
     ~H"""
-    <div class="content">
+    <div class="moon-accordion-content">
       <div class="overflow-hidden">
         <div class={classes(["pb-4 pt-0", @class])}>
           {render_slot(@inner_block)}

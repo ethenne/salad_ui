@@ -2,6 +2,9 @@ defmodule SaladUI.Pagination do
   @moduledoc false
   use SaladUI, :component
 
+  import SaladUI.Button
+  import SaladUI.Icon
+
   @doc """
   Renders a pagination.
 
@@ -38,16 +41,15 @@ defmodule SaladUI.Pagination do
   def pagination(assigns) do
     ~H"""
     <nav
-      arial-label="pagination"
+      aria-label="pagination"
       role="pagination"
       class={
         classes([
-          "mx-auto flex w-full justify-center",
+          "moon-pagination",
           @class
         ])
       }
       {@rest}
-      }
     >
       {render_slot(@inner_block)}
     </nav>
@@ -71,7 +73,6 @@ defmodule SaladUI.Pagination do
         ])
       }
       {@rest}
-      }
     >
       {render_slot(@inner_block)}
     </ul>
@@ -122,11 +123,11 @@ defmodule SaladUI.Pagination do
       |> assign(:"is-active", is_active)
 
     ~H"""
-    <.link
+    <.button
       aria-current={(assigns[:"is-active"] && "page") || ""}
       class={
         classes([
-          "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:ring-ring focus-visible:outline-none focus-visible:ring-1 disabled:pointer-events-none disabled:opacity-50",
+          "moon-pagination-item",
           @variation_class,
           @class
         ])
@@ -134,7 +135,7 @@ defmodule SaladUI.Pagination do
       {@rest}
     >
       {render_slot(@inner_block)}
-    </.link>
+    </.button>
     """
   end
 
@@ -144,26 +145,28 @@ defmodule SaladUI.Pagination do
   attr :class, :string, default: nil
   attr :rest, :global
 
-  def pagination_next(assigns) do
+  slot :inner_block, required: false
+
+  def(pagination_next(assigns)) do
     ~H"""
     <.pagination_link
       aria-label="Go to next page"
       size="default"
-      class={classes(["gap-1 pr-2.5", @class])}
+      class={classes(["", @class])}
       {@rest}
     >
-      <span>Next</span>
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke-width="2"
-        stroke="currentColor"
-        class="size-6 w-3.5"
-      >
-        <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
-      </svg>
+      {render_next_button(assigns)}
     </.pagination_link>
+    """
+  end
+
+  defp render_next_button(assigns) do
+    ~H"""
+    <%= if is_nil(@inner_block) or Enum.empty?(@inner_block) do %>
+      <p>Next</p>
+    <% else %>
+      {render_slot(@inner_block)}
+    <% end %>
     """
   end
 
@@ -173,26 +176,28 @@ defmodule SaladUI.Pagination do
   attr :class, :string, default: nil
   attr :rest, :global
 
+  slot :inner_block, required: false
+
   def pagination_previous(assigns) do
     ~H"""
     <.pagination_link
       aria-label="Go to previous page"
       size="default"
-      class={classes(["gap-1 pr-2.5", @class])}
+      class={classes(["", @class])}
       {@rest}
     >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke-width="2"
-        stroke="currentColor"
-        class="size-6 w-3.5"
-      >
-        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
-      </svg>
-      <span>Previous</span>
+      {render_prev_button(assigns)}
     </.pagination_link>
+    """
+  end
+
+  defp render_prev_button(assigns) do
+    ~H"""
+    <%= if is_nil(@inner_block) or Enum.empty?(@inner_block) do %>
+      <p>Previous</p>
+    <% else %>
+      {render_slot(@inner_block)}
+    <% end %>
     """
   end
 

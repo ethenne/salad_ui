@@ -85,7 +85,7 @@ defmodule SaladUI.SegmentedControl do
       disabled={@disabled || @builder.disabled}
       class={
         classes([
-          "segment has-[:checked]:active",
+          "moon-segment has-[:checked]:active",
           @class
         ])
       }
@@ -115,7 +115,7 @@ defmodule SaladUI.SegmentedControl do
       disabled={@disabled || @builder.disabled}
       class={
         classes([
-          "segment has-[:checked]:active",
+          "moon-segment has-[:checked]:active",
           @class
         ])
       }

@@ -27,6 +27,7 @@ defmodule SaladUI do
       import SaladUI.Accordion
       import SaladUI.Alert
       import SaladUI.AlertDialog
+      import SaladUI.Authenticator
       import SaladUI.Avatar
       import SaladUI.Badge
       import SaladUI.Breadcrumb
@@ -44,8 +45,10 @@ defmodule SaladUI do
       import SaladUI.Icon
       import SaladUI.Input
       import SaladUI.Label
+      import SaladUI.Loader
       import SaladUI.Menu
       import SaladUI.Pagination
+      import SaladUI.Placeholder
       import SaladUI.Popover
       import SaladUI.Progress
       import SaladUI.Radio
@@ -61,6 +64,7 @@ defmodule SaladUI do
       import SaladUI.Switch
       import SaladUI.Table
       import SaladUI.Tabs
+      import SaladUI.Tag
       import SaladUI.Textarea
       import SaladUI.Toggle
       import SaladUI.ToggleGroup

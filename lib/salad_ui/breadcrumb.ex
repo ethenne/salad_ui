@@ -2,6 +2,8 @@ defmodule SaladUI.Breadcrumb do
   @moduledoc false
   use SaladUI, :component
 
+  import SaladUI.Icon
+
   @doc """
   Renders a breadcrumb.
 
@@ -34,7 +36,7 @@ defmodule SaladUI.Breadcrumb do
       arial-label="breadcrumb"
       class={
         classes([
-          "flex flex-wrap items-center gap-1.5 break-words text-sm text-muted-foreground sm:gap-2.5",
+          "flex flex-wrap items-center gap-1.5 break-words text-sm sm:gap-2.5",
           @class
         ])
       }
@@ -58,7 +60,7 @@ defmodule SaladUI.Breadcrumb do
     <ol
       class={
         classes([
-          "flex flex-wrap items-center gap-1.5 break-words text-sm text-muted-foreground sm:gap-2.5",
+          "moon-breadcrumb",
           @class
         ])
       }
@@ -82,7 +84,7 @@ defmodule SaladUI.Breadcrumb do
     <li
       class={
         classes([
-          "inline-flex items-center gap-1.5",
+          "moon-breadcrumb-item",
           @class
         ])
       }
@@ -155,22 +157,13 @@ defmodule SaladUI.Breadcrumb do
       aria-hidden="true"
       class={
         classes([
-          "[&>svg]:size-3.5",
+          "flex h-9 w-auto items-center justify-center",
           @class
         ])
       }
       {@rest}
     >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke-width="2"
-        stroke="currentColor"
-        class="size-6 w-3"
-      >
-        <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
-      </svg>
+      <.icon name="chevron-right" />
     </li>
     """
   end
@@ -192,20 +185,7 @@ defmodule SaladUI.Breadcrumb do
       }
       {@rest}
     >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke-width="2"
-        stroke="currentColor"
-        class="size-6 w--4 h-4"
-      >
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          d="M6.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM12.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM18.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z"
-        />
-      </svg>
+      <.icon name="dots-horizontal" />
 
       <span class="sr-only">More</span>
     </div>

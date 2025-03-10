@@ -46,7 +46,7 @@ defmodule SaladUI.Form do
 
   def form_item(assigns) do
     ~H"""
-    <div class={classes(["space-y-2", @class])} {@rest}>
+    <div class={classes(["moon-form-group", @class])} {@rest}>
       {render_slot(@inner_block)}
     </div>
     """

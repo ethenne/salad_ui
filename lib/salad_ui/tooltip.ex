@@ -52,6 +52,7 @@ defmodule SaladUI.Tooltip do
   attr :class, :string, default: nil
   attr :side, :string, default: "top", values: ~w(bottom left right top)
   attr :rest, :global
+  attr :pointer, :boolean, default: false
   slot :inner_block, required: true
 
   def tooltip_content(assigns) do
@@ -63,8 +64,9 @@ defmodule SaladUI.Tooltip do
       data-side={@side}
       class={
         classes([
-          "tooltip-content absolute whitespace-nowrap hidden group-hover/tooltip:block",
-          "z-50 w-auto overflow-hidden rounded-md border bg-popover px-3 py-1.5 text-sm text-popover-foreground shadow-md animate-in fade-in-0 zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
+          "moon-tooltip absolute whitespace-nowrap hidden group-hover/tooltip:block",
+          "z-50 w-auto animate-in fade-in-0 zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
+          @pointer && "moon-tooltip-pointer",
           @variant_class,
           @class
         ])

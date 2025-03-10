@@ -7,30 +7,38 @@ defmodule SaladUI.Alert do
 
   ## Examples
 
-      <.alert variant="destructive">
+      <.alert>
         <.alert_title>Alert title</.alert_title>
         <.alert_description>Alert description</.alert_description>
       </.alert>
   """
 
-  attr :variant, :string, default: "default", values: ~w(default destructive)
+  attr :variant, :string,
+    values: ~w(positive negative neutral caution info discovery),
+    default: "neutral",
+    doc: "the alert variant style"
+
   attr :class, :string, default: nil
   slot :inner_block, required: true
+  slot :action, required: false
   attr :rest, :global, default: %{}
 
   def alert(assigns) do
+    assigns = assign(assigns, :variant_class, variant(assigns))
+
     ~H"""
     <div
       class={
         classes([
-          "relative w-full rounded-lg border p-4 [&>span~*]:pl-7 [&>span+div]:translate-y-[-3px] [&>span]:absolute [&>span]:left-4 [&>span]:top-4",
+          "moon-alert items-start justify-between",
           @variant_class,
           @class
         ])
       }
       {@rest}
     >
-      {render_slot(@inner_block)}
+      <div>{render_slot(@inner_block)}</div>
+      <div class="moon-alert-action flex gap-2 !h-5">{render_slot(@action)}</div>
     </div>
     """
   end
@@ -43,11 +51,15 @@ defmodule SaladUI.Alert do
   slot :inner_block, required: true
 
   def alert_title(assigns) do
+    render_title_comnponent(assigns)
+  end
+
+  defp render_title_comnponent(assigns) do
     ~H"""
     <h5
       class={
         classes([
-          "mb-1 font-medium leading-none tracking-tight",
+          "moon-alert-title",
           @class
         ])
       }
@@ -69,34 +81,38 @@ defmodule SaladUI.Alert do
 
   def alert_description(assigns) do
     ~H"""
-    <div
+    <p
       class={
         classes([
-          "moon-alert",
+          "moon-alert-content",
           @class
         ])
       }
       {@rest}
     >
-      {render_alert_content(assigns)}
-    </div>
+      {render_slot(@inner_block)}
+    </p>
     """
   end
 
-  defp render_alert_content(%{content: content} = assigns) when not content do
-    ~H"""
-    <span class="title">{@title}</span>
-    """
-  end
+  @variants %{
+    variant: %{
+      "positive" => "moon-alert-positive",
+      "negative" => "moon-alert-negative",
+      "info" => "moon-alert-info",
+      "caution" => "moon-alert-caution",
+      "neutral" => "moon-alert-neutral",
+      "discovery" => "moon-alert-discovery"
+    }
+  }
 
-  defp render_alert_content(assigns) do
-    ~H"""
-    <div>
-      <div class="title-wrapper">
-        <span class="title">{@title}</span>
-      </div>
-      <p class="tcontent">{@content}</p>
-    </div>
-    """
+  @default_variants %{
+    variant: "neutral"
+  }
+
+  defp variant(props) do
+    variants = Map.merge(@default_variants, props)
+
+    Enum.map_join(variants, " ", fn {key, value} -> @variants[key][value] end)
   end
 end

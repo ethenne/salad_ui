@@ -8,7 +8,7 @@ defmodule SaladUI.Badge do
   ## Examples
 
       <.badge>Badge</.badge>
-      <.badge variant="destructive">Badge</.badge>
+      <.badge>Badge</.badge>
   """
   attr :class, :string, default: nil
 

@@ -168,7 +168,8 @@ const opacity = {
   "60": "var(--effect-opacity-60)",
   "80": "var(--effect-opacity-80)",
   "100": "var(--effect-opacity-100)",
-  "disabled": "var(--effect-opacity-disabled)"
+  "disabled": "var(--effect-opacity-disabled)",
+  "transparent": "var(--effect-opacity-transparent)"
 };
 
 const generateTextUtilities = (prefix, levels) => {

@@ -66,8 +66,8 @@ defmodule SaladUI.MixProject do
       {:styler, "~> 0.7", only: [:dev, :test], runtime: false},
       {:ex_doc, "~> 0.24", only: [:dev, :test], runtime: false},
       {:excoveralls, "~> 0.10", only: [:dev, :test], runtime: false},
-      {:tailwind, "~> 0.2.4", only: [:dev, :test], runtime: Mix.env() == :dev},
-      {:moon_assets, "~> 0.8.6-lv1.0", organization: "coingaming"}
+      {:tailwind, "~> 0.2.4", only: [:dev], runtime: Mix.env() == :dev},
+      {:moon_assets, "~> 0.9.0", organization: "coingaming"}
     ]
   end
 

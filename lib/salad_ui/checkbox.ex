@@ -3,41 +3,62 @@ defmodule SaladUI.Checkbox do
   use SaladUI, :component
 
   @doc """
-  Implement checkbox input component
+  Checkbox component with customizable slots for label and input.
 
   ## Examples:
-      <.checkbox name="agree" value={true} />
+      <.checkbox>
+        <:label>Accept terms</:label>
+        <:checkbox id="custom-checkbox"/>
+      </.checkbox>
+
+      <.checkbox>
+        <:checkbox id="custom-checkbox"/>
+        <:label>Accept terms</:label>
+      </.checkbox>
   """
-  attr :name, :any, default: nil
+  attr :name, :string, default: nil
   attr :value, :any, default: nil
-  attr :"default-value", :any, values: [true, false, "true", "false"], default: false
-  attr :field, Phoenix.HTML.FormField
   attr :class, :string, default: nil
+  attr :id, :string, default: "moon-checkbox"
   attr :rest, :global
+
+  slot :checkbox, required: false
+  slot :label, required: false
 
   def checkbox(assigns) do
     assigns =
-      prepare_assign(assigns)
-
-    assigns =
-      assign_new(assigns, :checked, fn -> Phoenix.HTML.Form.normalize_value("checkbox", assigns.value) end)
+      assign_new(assigns, :checked, fn ->
+        Phoenix.HTML.Form.normalize_value("checkbox", assigns.value)
+      end)
 
     ~H"""
     <input type="hidden" name={@name} value="false" />
-    <input
-      id="moon-checkbox"
-      type="checkbox"
-      class={
-        classes([
-          "moon-checkbox",
-          @class
-        ])
-      }
-      name={@name}
-      value="true"
-      checked={@checked}
-      {@rest}
-    />
+
+    <%= if @label != [] or @checkbox != [] do %>
+      <div class="moon-checkbox-wrapper">
+        {render_slot(@inner_block)}
+      </div>
+    <% else %>
+      {render_checkbox_input(assigns)}
+    <% end %>
+    """
+  end
+
+  defp render_checkbox_input(assigns) do
+    ~H"""
+    <%= if @checkbox != [] do %>
+      {render_slot(@checkbox)}
+    <% else %>
+      <input
+        id={@id}
+        type="checkbox"
+        class={classes(["moon-checkbox", @class])}
+        name={@name}
+        value="true"
+        checked={if @checked, do: "checked", else: nil}
+        {@rest}
+      />
+    <% end %>
     """
   end
 end
