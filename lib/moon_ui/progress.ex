@@ -11,24 +11,54 @@ defmodule MoonUI.Progress do
       <.progress class="w-[60%]" value={20}/>
 
   """
-  attr :class, :string, default: nil
-  attr :value, :integer, default: 0, doc: ""
+  attr :class, :string, default: nil, doc: "Class for the progress bar"
+  attr :id, :string, default: "moon-linear-progress"
+
+  attr :value, :integer, default: 0, doc: "The value of progress bar"
+  attr :max, :integer, default: 100, doc: "The maximum value of progress bar"
+  attr :size, :string, default: "2xs", values: ~w(2xs 3xs), doc: "Size of the progress bar"
+  attr :label, :string, default: nil, doc: "Label for the progress bar"
+
+  attr :label_position, :string,
+    default: "bottom",
+    values: ~w(top bottom),
+    doc: "Position of the label"
+
   attr :rest, :global
 
   def progress(assigns) do
     assigns = assign(assigns, :value, normalize_integer(assigns[:value]))
 
     ~H"""
-    <div
-      class={classes(["relative h-4 w-full overflow-hidden rounded-full bg-secondary", @class])}
-      {@rest}
-    >
-      <div
-        class="h-full w-full flex-1 bg-primary transition-all"
-        style={"transform: translateX(-#{100 - (@value || 0)}%)"}
-      >
+    <%= if @label do %>
+      <div class="moon-linear-progress-wrapper">
+        <%= if @label && @label_position in ["top"] do %>
+          <label for={@id}>
+            {@label}
+          </label>
+        <% end %>
+
+        <div class={classes(["moon-linear-progress", if(@size == "3xs", do: "moon-linear-progress-3xs", else: nil), @class])} style={"--progress-value: #{@value}%;"} {@rest}>
+            <div
+              class="moon-linear-progress-bar"
+            >
+            </div>
+        </div>
+
+        <%= if @label && @label_position in ["bottom"] do %>
+          <label for={@id}>
+            {@label}
+          </label>
+        <% end %>
       </div>
-    </div>
+    <% else %>
+      <div class={classes(["moon-linear-progress", if(@size == "3xs", do: "moon-linear-progress-3xs", else: nil), @class])} style={"--progress-value: #{@value}%;"} {@rest}>
+        <div
+          class="moon-linear-progress-bar"
+        >
+        </div>
+      </div>
+    <% end %>
     """
   end
 end
