@@ -1,4 +1,4 @@
-defmodule SaladUI.Tabs do
+defmodule MoonUI.Tabs do
   @moduledoc """
   Implementation of tabs components from https://ui.shadcn.com/docs/components/tabs
 
@@ -25,7 +25,7 @@ defmodule SaladUI.Tabs do
         </.tabs_content>
       </.tabs>
   """
-  use SaladUI, :component
+  use MoonUI, :component
 
   attr :id, :string, required: true, doc: "id for root tabs tag"
   attr :default, :string, default: nil, doc: "default tab value"

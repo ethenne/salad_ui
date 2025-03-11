@@ -1,6 +1,6 @@
-defmodule SaladUI.ToggleGroup do
+defmodule MoonUI.ToggleGroup do
   @moduledoc false
-  use SaladUI, :component
+  use MoonUI, :component
 
   @doc """
   A set of two-state buttons that can be toggled on or off.

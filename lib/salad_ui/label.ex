@@ -1,6 +1,6 @@
-defmodule SaladUI.Label do
+defmodule MoonUI.Label do
   @moduledoc false
-  use SaladUI, :component
+  use MoonUI, :component
 
   @doc """
   Renders a label.

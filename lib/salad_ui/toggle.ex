@@ -1,6 +1,6 @@
-defmodule SaladUI.Toggle do
+defmodule MoonUI.Toggle do
   @moduledoc false
-  use SaladUI, :component
+  use MoonUI, :component
 
   @doc """
   Toggle component, A two-state button that can be either on or off.

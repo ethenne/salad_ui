@@ -1,7 +1,7 @@
-defmodule SaladUI.BreadcrumbTest do
+defmodule MoonUI.BreadcrumbTest do
   use ComponentCase
 
-  import SaladUI.Breadcrumb
+  import MoonUI.Breadcrumb
 
   describe "Test breadcrumb" do
     test "It renders breadcrumb correctly" do

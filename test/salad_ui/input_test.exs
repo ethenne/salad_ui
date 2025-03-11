@@ -1,7 +1,7 @@
-defmodule SaladUI.InputTest do
+defmodule MoonUI.InputTest do
   use ComponentCase
 
-  import SaladUI.Input
+  import MoonUI.Input
 
   describe "Test Input" do
     test "It renders text input correctly" do

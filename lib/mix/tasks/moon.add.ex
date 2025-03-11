@@ -1,15 +1,15 @@
-defmodule Mix.Tasks.Salad.Add do
+defmodule Mix.Tasks.Moon.Add do
   @moduledoc """
-  A Mix task for adding Salad UI components to your project.
+  A Mix task for adding Moon UI components to your project.
 
   Usage:
-    mix salad.add [component_name]
-    mix salad.add all
-    mix salad.add help
+    mix moon.add [component_name]
+    mix moon.add all
+    mix moon.add help
   """
   use Mix.Task
 
-  import SaladUi.TasksHelpers
+  import MoonUi.TasksHelpers
 
   @non_components_files ~w(patcher helper task_helpers)
 
@@ -91,14 +91,14 @@ defmodule Mix.Tasks.Salad.Add do
     module_name = get_module_prefix()
 
     source
-    |> String.replace(~r/defmodule SaladUI\.([a-zA-Z0-9_]+)/, "defmodule #{module_name}.\\1")
-    |> String.replace(~r/use SaladUI,\s*:component/, "use #{String.trim_trailing(module_name, "s")}")
-    |> String.replace(~r/import SaladUI\./, "import #{module_name}.")
+    |> String.replace(~r/defmodule MoonUI\.([a-zA-Z0-9_]+)/, "defmodule #{module_name}.\\1")
+    |> String.replace(~r/use MoonUI,\s*:component/, "use #{String.trim_trailing(module_name, "s")}")
+    |> String.replace(~r/import MoonUI\./, "import #{module_name}.")
     |> maybe_apply_additional_insertions(module_name, file_name)
   end
 
   defp maybe_apply_additional_insertions(source, module_name, "chart") do
-    String.replace(source, "SaladUI.LiveChart", "#{module_name}.LiveChart")
+    String.replace(source, "MoonUI.LiveChart", "#{module_name}.LiveChart")
   end
 
   defp maybe_apply_additional_insertions(source, _, _), do: source
@@ -122,7 +122,7 @@ defmodule Mix.Tasks.Salad.Add do
   end
 
   defp copy_chart_hook do
-    source_path = Path.join(:code.priv_dir(:salad_ui), "static/assets/ChartHook.js")
+    source_path = Path.join(:code.priv_dir(:moon_ui), "static/assets/ChartHook.js")
     target_path = Path.join(File.cwd!(), "assets/js/ChartHook.js")
 
     unless File.exists?(target_path) do
@@ -134,7 +134,7 @@ defmodule Mix.Tasks.Salad.Add do
 
   # get module prefix from config or build default from app name
   defp get_module_prefix do
-    module_prefix = Application.get_env(:salad_ui, :component_module_prefix)
+    module_prefix = Application.get_env(:moon_ui, :component_module_prefix)
 
     if is_nil(module_prefix) do
       Mix.Project.config()[:app]
@@ -147,7 +147,7 @@ defmodule Mix.Tasks.Salad.Add do
   end
 
   defp component_dir do
-    Application.get_env(:salad_ui, :components_path)
+    Application.get_env(:moon_ui, :components_path)
   end
 
   defp print_usage_and_components(available_components) do

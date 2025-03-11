@@ -1,6 +1,6 @@
 # Manual installation
 
-If you want to config yourself, here is step by step adding configuration to get SaladUI working in your project
+If you want to config yourself, here is step by step adding configuration to get MoonUI working in your project
 
 1. Add custom color
 - Goto [https://ui.shadcn.com/themes](https://ui.shadcn.com/themes).
@@ -45,13 +45,13 @@ If you want to config yourself, here is step by step adding configuration to get
 ```
 
 2. Configure tailwind
-- Tell tailwind to extract class from `SaladUI`
+- Tell tailwind to extract class from `MoonUI`
 - Add custom color
 - Add tailwind plugin
 ```js
 module.exports = {
   content: [
-    "../deps/salad_ui/lib/**/*.ex",
+    "../deps/Moon_ui/lib/**/*.ex",
     ],
   theme: {
     extend: {

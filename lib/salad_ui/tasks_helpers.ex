@@ -1,16 +1,16 @@
-defmodule SaladUi.TasksHelpers do
+defmodule MoonUi.TasksHelpers do
   @moduledoc """
-  Helper functions for the SaladUI mix tasks.
+  Helper functions for the MoonUI mix tasks.
   """
 
   @doc """
-  Retrieves the base path for SaladUI library source files.
+  Retrieves the base path for MoonUI library source files.
 
   Returns the appropriate path based on the current environment:
-  - In test: Uses the local `lib/salad_ui` directory.
+  - In test: Uses the local `lib/Moon_ui` directory.
   - In development: Locates the path within project dependencies.
 
-  Raises an error if SaladUI cannot be found in the dependencies.
+  Raises an error if MoonUI cannot be found in the dependencies.
   """
   def get_base_path do
     if Mix.env() == :test, do: test_path(), else: development_path()
@@ -19,21 +19,21 @@ defmodule SaladUi.TasksHelpers do
   defp test_path, do: __DIR__
 
   defp development_path do
-    case find_salad_ui_dep() do
-      {:ok, path} -> Path.expand(Path.join(path, "lib/salad_ui"))
-      {:error, reason} -> raise "Failed to find SaladUI: #{reason}"
+    case find_Moon_ui_dep() do
+      {:ok, path} -> Path.expand(Path.join(path, "lib/Moon_ui"))
+      {:error, reason} -> raise "Failed to find MoonUI: #{reason}"
     end
   end
 
-  defp find_salad_ui_dep do
+  defp find_Moon_ui_dep do
     Mix.Dep.load_and_cache()
-    |> Enum.find(&(&1.app == :salad_ui))
+    |> Enum.find(&(&1.app == :Moon_ui))
     |> case do
       %Mix.Dep{opts: opts} = dep ->
         {:ok, opts[:path] || default_dep_path(dep)}
 
       nil ->
-        {:error, "SaladUI not found in dependencies"}
+        {:error, "MoonUI not found in dependencies"}
     end
   end
 

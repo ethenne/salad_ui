@@ -1,8 +1,8 @@
-defmodule SaladUI.Breadcrumb do
+defmodule MoonUI.Breadcrumb do
   @moduledoc false
-  use SaladUI, :component
+  use MoonUI, :component
 
-  import SaladUI.Icon
+  import MoonUI.Icon
 
   @doc """
   Renders a breadcrumb.

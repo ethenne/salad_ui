@@ -1,10 +1,10 @@
-defmodule SaladUI do
+defmodule MoonUI do
   @moduledoc false
   def component do
     quote do
       use Phoenix.Component
 
-      import SaladUI.Helpers
+      import MoonUI.Helpers
 
       # alias OrangeCmsWeb.Components.LadUI.LadJS
       alias Phoenix.LiveView.JS
@@ -24,51 +24,51 @@ defmodule SaladUI do
 
   defmacro __using__(_) do
     quote do
-      import SaladUI.Accordion
-      import SaladUI.Alert
-      import SaladUI.AlertDialog
-      import SaladUI.Authenticator
-      import SaladUI.Avatar
-      import SaladUI.Badge
-      import SaladUI.Breadcrumb
-      import SaladUI.Button
-      import SaladUI.Card
-      import SaladUI.Chart
-      import SaladUI.Checkbox
-      import SaladUI.Chip
-      import SaladUI.Collapsible
-      import SaladUI.Dialog
-      import SaladUI.DropdownMenu
-      import SaladUI.Form
-      import SaladUI.Helpers
-      import SaladUI.HoverCard
-      import SaladUI.Icon
-      import SaladUI.Input
-      import SaladUI.Label
-      import SaladUI.Loader
-      import SaladUI.Menu
-      import SaladUI.Pagination
-      import SaladUI.Placeholder
-      import SaladUI.Popover
-      import SaladUI.Progress
-      import SaladUI.Radio
-      import SaladUI.RadioGroup
-      import SaladUI.ScrollArea
-      import SaladUI.SegmentedControl
-      import SaladUI.Select
-      import SaladUI.Separator
-      import SaladUI.Sheet
-      import SaladUI.Sidebar
-      import SaladUI.Skeleton
-      import SaladUI.Slider
-      import SaladUI.Switch
-      import SaladUI.Table
-      import SaladUI.Tabs
-      import SaladUI.Tag
-      import SaladUI.Textarea
-      import SaladUI.Toggle
-      import SaladUI.ToggleGroup
-      import SaladUI.Tooltip
+      import MoonUI.Accordion
+      import MoonUI.Alert
+      import MoonUI.AlertDialog
+      import MoonUI.Authenticator
+      import MoonUI.Avatar
+      import MoonUI.Badge
+      import MoonUI.Breadcrumb
+      import MoonUI.Button
+      import MoonUI.Card
+      import MoonUI.Chart
+      import MoonUI.Checkbox
+      import MoonUI.Chip
+      import MoonUI.Collapsible
+      import MoonUI.Dialog
+      import MoonUI.DropdownMenu
+      import MoonUI.Form
+      import MoonUI.Helpers
+      import MoonUI.HoverCard
+      import MoonUI.Icon
+      import MoonUI.Input
+      import MoonUI.Label
+      import MoonUI.Loader
+      import MoonUI.Menu
+      import MoonUI.Pagination
+      import MoonUI.Placeholder
+      import MoonUI.Popover
+      import MoonUI.Progress
+      import MoonUI.Radio
+      import MoonUI.RadioGroup
+      import MoonUI.ScrollArea
+      import MoonUI.SegmentedControl
+      import MoonUI.Select
+      import MoonUI.Separator
+      import MoonUI.Sheet
+      import MoonUI.Sidebar
+      import MoonUI.Skeleton
+      import MoonUI.Slider
+      import MoonUI.Switch
+      import MoonUI.Table
+      import MoonUI.Tabs
+      import MoonUI.Tag
+      import MoonUI.Textarea
+      import MoonUI.Toggle
+      import MoonUI.ToggleGroup
+      import MoonUI.Tooltip
     end
   end
 end

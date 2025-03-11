@@ -1,4 +1,4 @@
-defmodule SaladUI.Patcher.ElixirPatcher do
+defmodule MoonUI.Patcher.ElixirPatcher do
   @moduledoc false
 
   def patch_application_supervisor(application_file_path, new_children, description \\ nil) do

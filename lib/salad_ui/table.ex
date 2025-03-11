@@ -1,8 +1,8 @@
-defmodule SaladUI.Table do
+defmodule MoonUI.Table do
   @moduledoc """
   Implement of table components from https://ui.shadcn.com/docs/components/table
   """
-  use SaladUI, :component
+  use MoonUI, :component
 
   @doc """
   Table component

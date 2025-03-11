@@ -1,6 +1,6 @@
-defmodule SaladUI.Loader do
+defmodule MoonUI.Loader do
   @moduledoc false
-  use SaladUI, :component
+  use MoonUI, :component
 
   @doc """
   Renders loader spin.

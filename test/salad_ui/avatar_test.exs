@@ -1,7 +1,7 @@
-defmodule SaladUI.AvatarTest do
+defmodule MoonUI.AvatarTest do
   use ComponentCase
 
-  import SaladUI.Avatar
+  import MoonUI.Avatar
 
   describe "Test Avatar" do
     test "It renders avatar image correctly" do

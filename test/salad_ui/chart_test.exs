@@ -1,7 +1,7 @@
-defmodule SaladUI.ChartTest do
+defmodule MoonUI.ChartTest do
   use ComponentCase
 
-  alias SaladUI.LiveChart
+  alias MoonUI.LiveChart
 
   @sample_config %{
     labels: ["Jan", "Feb", "Mar"],

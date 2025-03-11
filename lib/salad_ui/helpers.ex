@@ -1,4 +1,4 @@
-defmodule SaladUI.Helpers do
+defmodule MoonUI.Helpers do
   @moduledoc false
   use Phoenix.Component
 
@@ -321,7 +321,7 @@ defmodule SaladUI.Helpers do
 
             Hint: you can set up the `error_translator_function` to route all errors to your application helpers:
 
-              config :salad_ui, :error_translator_function, {MyAppWeb.CoreComponents, :translate_error}
+              config :Moon_ui, :error_translator_function, {MyAppWeb.CoreComponents, :translate_error}
 
             Given value: #{inspect(value)}
 
@@ -336,7 +336,7 @@ defmodule SaladUI.Helpers do
   end
 
   defp get_translator_from_config do
-    case Application.get_env(:salad_ui, :error_translator_function) do
+    case Application.get_env(:Moon_ui, :error_translator_function) do
       {module, function} -> &apply(module, function, [&1])
       nil -> nil
     end

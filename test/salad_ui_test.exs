@@ -1,5 +1,5 @@
-defmodule SaladUiTest do
+defmodule MoonUiTest do
   use ExUnit.Case
 
-  doctest SaladUI
+  doctest MoonUI
 end

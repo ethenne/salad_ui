@@ -1,6 +1,6 @@
-defmodule SaladUI.Checkbox do
+defmodule MoonUI.Checkbox do
   @moduledoc false
-  use SaladUI, :component
+  use MoonUI, :component
 
   @doc """
   Checkbox component with customizable slots for label and input.
@@ -20,10 +20,11 @@ defmodule SaladUI.Checkbox do
   attr :value, :any, default: nil
   attr :class, :string, default: nil
   attr :id, :string, default: "moon-checkbox"
+  attr :label, :string, default: nil
+  attr :label_position, :string, default: "right", values: ~w(left right), doc: "Position of the label"
   attr :rest, :global
 
-  slot :checkbox, required: false
-  slot :label, required: false
+  slot :inner_block, required: false
 
   def checkbox(assigns) do
     assigns =
@@ -34,20 +35,28 @@ defmodule SaladUI.Checkbox do
     ~H"""
     <input type="hidden" name={@name} value="false" />
 
-    <%= if @label != [] or @checkbox != [] do %>
+    <%= if @label do %>
       <div class="moon-checkbox-wrapper">
-        {render_slot(@inner_block)}
+        <%= if @label && @label_position in ["left"] do %>
+          <label for={@id}>
+            {@label}
+          </label>
+        <% end %>
+        <input
+          id={@id}
+          type="checkbox"
+          class={classes(["moon-checkbox", @class])}
+          name={@name}
+          value="true"
+          checked={if @checked, do: "checked", else: nil}
+          {@rest}
+        />
+        <%= if @label && @label_position in ["right"] do %>
+          <label for={@id}>
+            {@label}
+          </label>
+        <% end %>
       </div>
-    <% else %>
-      {render_checkbox_input(assigns)}
-    <% end %>
-    """
-  end
-
-  defp render_checkbox_input(assigns) do
-    ~H"""
-    <%= if @checkbox != [] do %>
-      {render_slot(@checkbox)}
     <% else %>
       <input
         id={@id}

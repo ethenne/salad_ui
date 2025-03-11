@@ -1,4 +1,4 @@
-defmodule SaladUI.Sheet do
+defmodule MoonUI.Sheet do
   @moduledoc """
   Implement Sheet componet https://ui.shadcn.com/docs/components/sheet
 
@@ -37,7 +37,7 @@ defmodule SaladUI.Sheet do
         </.sheet_content>
       </.sheet>
   """
-  use SaladUI, :component
+  use MoonUI, :component
 
   attr :class, :string, default: "inline-block"
   slot :inner_block, required: true

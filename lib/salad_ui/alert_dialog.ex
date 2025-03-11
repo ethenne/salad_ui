@@ -1,8 +1,8 @@
-defmodule SaladUI.AlertDialog do
+defmodule MoonUI.AlertDialog do
   @moduledoc """
   Implement of Alert Dialog components
   """
-  use SaladUI, :component
+  use MoonUI, :component
 
   @doc """
   Alert Dialog component

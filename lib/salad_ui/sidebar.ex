@@ -1,12 +1,12 @@
-defmodule SaladUI.Sidebar do
+defmodule MoonUI.Sidebar do
   @moduledoc false
-  use SaladUI, :component
+  use MoonUI, :component
 
-  import SaladUI.Input
-  import SaladUI.Separator
-  import SaladUI.Sheet
-  import SaladUI.Skeleton
-  import SaladUI.Tooltip
+  import MoonUI.Input
+  import MoonUI.Separator
+  import MoonUI.Sheet
+  import MoonUI.Skeleton
+  import MoonUI.Tooltip
 
   @sidebar_width "16rem"
   @sidebar_width_mobile "18rem"
@@ -330,7 +330,7 @@ defmodule SaladUI.Sidebar do
       data-sidebar="content"
       class={
         classes([
-          "salad-scroll-area",
+          "Moon-scroll-area",
           "flex min-h-0 flex-1 flex-col gap-2 overflow-auto group-data-[collapsible=icon]:overflow-hidden",
           @class
         ])

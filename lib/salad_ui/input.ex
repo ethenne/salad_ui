@@ -1,6 +1,6 @@
-defmodule SaladUI.Input do
+defmodule MoonUI.Input do
   @moduledoc false
-  use SaladUI, :component
+  use MoonUI, :component
 
   @doc """
   Displays a form input field or a component that looks like an input field.
@@ -52,9 +52,11 @@ defmodule SaladUI.Input do
 
     ~H"""
     <div class={classes(["moon-form-group", @error && "text-destructive"])}>
-      <label :if={@label} for={@id}>
-        {@label}
-      </label>
+      <%= if @label && @label_position in ["right", "bottom"] do %>
+        <label :if={@label} for={@id}>
+          {@label}
+        </label>
+      <% end %>
       <input class={classes(["moon-input", @class])} {@rest} disabled={@disabled} />
       <.hint hint={@hint} error={@error} disabled={@disabled} />
     </div>

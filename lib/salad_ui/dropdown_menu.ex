@@ -1,6 +1,6 @@
-defmodule SaladUI.DropdownMenu do
+defmodule MoonUI.DropdownMenu do
   @moduledoc false
-  use SaladUI, :component
+  use MoonUI, :component
 
   alias Phoenix.LiveView.JS
 

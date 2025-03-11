@@ -1,7 +1,7 @@
-defmodule SaladUI.BadgeTest do
+defmodule MoonUI.BadgeTest do
   use ComponentCase
 
-  import SaladUI.Badge
+  import MoonUI.Badge
 
   describe "Test Badge" do
     test "It renders a badge default variant" do

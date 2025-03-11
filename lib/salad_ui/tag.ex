@@ -1,6 +1,6 @@
-defmodule SaladUI.Tag do
+defmodule MoonUI.Tag do
   @moduledoc false
-  use SaladUI, :component
+  use MoonUI, :component
 
   @doc """
     The tag component is used to display a tag.

@@ -1,9 +1,9 @@
-defmodule SaladUI.Form do
+defmodule MoonUI.Form do
   @moduledoc false
-  use SaladUI, :component
+  use MoonUI, :component
 
   @doc """
-  Implement of form component. SaladUI doesn't define its own form, but it provides a set of form-related components to help you build your own form.
+  Implement of form component. MoonUI doesn't define its own form, but it provides a set of form-related components to help you build your own form.
 
   Reuse `.form` from live view Component, so we don't have to duplicate it
 
@@ -41,12 +41,13 @@ defmodule SaladUI.Form do
       </div>
   """
   attr :class, :string, default: nil
+  attr :error, :boolean, default: false
   slot :inner_block, required: true
   attr :rest, :global
 
   def form_item(assigns) do
     ~H"""
-    <div class={classes(["moon-form-group", @class])} {@rest}>
+    <div class={classes(["moon-form-group", @error && "moon-form-group-error", @class])} {@rest}>
       {render_slot(@inner_block)}
     </div>
     """
@@ -71,7 +72,7 @@ defmodule SaladUI.Form do
       end
 
     ~H"""
-    <SaladUI.Label.label
+    <MoonUI.Label.label
       class={
         classes([
           @error && "text-destructive",
@@ -81,7 +82,7 @@ defmodule SaladUI.Form do
       {@rest}
     >
       {render_slot(@inner_block)}
-    </SaladUI.Label.label>
+    </MoonUI.Label.label>
     """
   end
 
@@ -101,7 +102,7 @@ defmodule SaladUI.Form do
 
   def form_description(assigns) do
     ~H"""
-    <p class={classes(["text-muted-foreground text-sm", @class])} {@rest}>
+    <p class={classes(["moon-hint", @class])} {@rest}>
       {render_slot(@inner_block)}
     </p>
     """

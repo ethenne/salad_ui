@@ -1,4 +1,4 @@
-defmodule SaladUI.Test.MixTaskCase do
+defmodule MoonUI.Test.MixTaskCase do
   @moduledoc """
   This module provides helper functions for testing Mix tasks.
   """
@@ -7,7 +7,7 @@ defmodule SaladUI.Test.MixTaskCase do
 
   using do
     quote do
-      import SaladUI.Test.MixTaskCase
+      import MoonUI.Test.MixTaskCase
     end
   end
 

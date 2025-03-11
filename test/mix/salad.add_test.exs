@@ -1,21 +1,21 @@
-defmodule Mix.Tasks.Salad.AddTest do
-  use SaladUI.Test.MixTaskCase
+defmodule Mix.Tasks.Moon.AddTest do
+  use MoonUI.Test.MixTaskCase
 
-  alias Mix.Tasks.Salad.Add
+  alias Mix.Tasks.Moon.Add
 
-  # The salad.add mix task returns a shortened list of available components
+  # The Moon.add mix task returns a shortened list of available components
   # when we are in test environment. This module attribute should match that
   # list to ensure the task behaves as expected. See
-  # `list_available_components/1` of `Mix.Tasks.Salad.Add` module
+  # `list_available_components/1` of `Mix.Tasks.Moon.Add` module
   @available_components ["button", "card", "input"]
 
   @components_path "test/support/components"
 
   setup do
-    Application.put_env(:salad_ui, :components_path, @components_path)
+    Application.put_env(:Moon_ui, :components_path, @components_path)
 
     on_exit(fn ->
-      Application.delete_env(:salad_ui, :components_path)
+      Application.delete_env(:Moon_ui, :components_path)
       File.rm_rf!(@components_path)
     end)
 

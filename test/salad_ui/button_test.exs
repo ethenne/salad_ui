@@ -1,7 +1,7 @@
-defmodule SaladUI.ButtonTest do
+defmodule MoonUI.ButtonTest do
   use ComponentCase
 
-  import SaladUI.Button
+  import MoonUI.Button
 
   describe "Test Button" do
     test "It renders default button correctly" do

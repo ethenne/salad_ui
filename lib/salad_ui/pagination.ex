@@ -1,9 +1,9 @@
-defmodule SaladUI.Pagination do
+defmodule MoonUI.Pagination do
   @moduledoc false
-  use SaladUI, :component
+  use MoonUI, :component
 
-  import SaladUI.Button
-  import SaladUI.Icon
+  import MoonUI.Button
+  import MoonUI.Icon
 
   @doc """
   Renders a pagination.

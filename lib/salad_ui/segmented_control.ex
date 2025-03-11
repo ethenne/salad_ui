@@ -1,6 +1,6 @@
-defmodule SaladUI.SegmentedControl do
+defmodule MoonUI.SegmentedControl do
   @moduledoc false
-  use SaladUI, :component
+  use MoonUI, :component
 
   @doc """
   A set of two-state buttons that can be toggled on or off.

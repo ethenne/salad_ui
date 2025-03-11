@@ -1,7 +1,7 @@
-defmodule SaladUI.CheckboxTest do
+defmodule MoonUI.CheckboxTest do
   use ComponentCase
 
-  import SaladUI.Checkbox
+  import MoonUI.Checkbox
 
   describe "Test Checkbox" do
     test "It renders checkbox correctly" do

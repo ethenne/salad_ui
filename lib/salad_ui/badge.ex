@@ -1,6 +1,6 @@
-defmodule SaladUI.Badge do
+defmodule MoonUI.Badge do
   @moduledoc false
-  use SaladUI, :component
+  use MoonUI, :component
 
   @doc """
   Renders a badge component

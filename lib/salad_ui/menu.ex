@@ -1,8 +1,8 @@
-defmodule SaladUI.Menu do
+defmodule MoonUI.Menu do
   @moduledoc """
   Implement menu components
   """
-  use SaladUI, :component
+  use MoonUI, :component
 
   @doc """
   Render menu

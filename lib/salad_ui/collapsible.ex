@@ -1,4 +1,4 @@
-defmodule SaladUI.Collapsible do
+defmodule MoonUI.Collapsible do
   @moduledoc """
   Implementation of Collapsible components.
 
@@ -16,7 +16,7 @@ defmodule SaladUI.Collapsible do
         </.collapsible>
 
   """
-  use SaladUI, :component
+  use MoonUI, :component
 
   attr :id, :string,
     required: true,

@@ -1,6 +1,6 @@
-defmodule SaladUI.Progress do
+defmodule MoonUI.Progress do
   @moduledoc false
-  use SaladUI, :component
+  use MoonUI, :component
 
   @doc """
   Render progress bar

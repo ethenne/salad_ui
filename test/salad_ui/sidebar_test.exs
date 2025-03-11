@@ -1,7 +1,7 @@
-defmodule SaladUI.SidebarTest do
+defmodule MoonUI.SidebarTest do
   use ComponentCase
 
-  import SaladUI.Sidebar
+  import MoonUI.Sidebar
 
   describe "sidebar provider" do
     test "renders with default classes and style" do
@@ -122,7 +122,7 @@ defmodule SaladUI.SidebarTest do
         |> clean_string()
 
       assert html =~ "data-sidebar=\"content\""
-      assert html =~ "salad-scroll-area"
+      assert html =~ "Moon-scroll-area"
       assert html =~ "flex min-h-0 flex-1 flex-col gap-2 overflow-auto"
       assert html =~ "custom-class"
       assert html =~ "Content"

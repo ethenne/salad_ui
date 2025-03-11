@@ -1,6 +1,6 @@
-defmodule SaladUI.Placeholder do
+defmodule MoonUI.Placeholder do
   @moduledoc false
-  use SaladUI, :component
+  use MoonUI, :component
 
   @doc """
   Renders placeholder.

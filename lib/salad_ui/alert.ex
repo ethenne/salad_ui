@@ -1,6 +1,6 @@
-defmodule SaladUI.Alert do
+defmodule MoonUI.Alert do
   @moduledoc false
-  use SaladUI, :component
+  use MoonUI, :component
 
   @doc """
   Render alert

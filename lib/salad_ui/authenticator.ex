@@ -1,6 +1,6 @@
-defmodule SaladUI.Authenticator do
+defmodule MoonUI.Authenticator do
   @moduledoc false
-  use SaladUI, :component
+  use MoonUI, :component
 
   @doc """
     The authenticator component is used to display a tag.

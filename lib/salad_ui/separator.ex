@@ -1,6 +1,6 @@
-defmodule SaladUI.Separator do
+defmodule MoonUI.Separator do
   @moduledoc false
-  use SaladUI, :component
+  use MoonUI, :component
 
   @doc """
   Renders a separator

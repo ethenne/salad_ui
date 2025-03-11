@@ -1,4 +1,4 @@
-defmodule SaladUI.Patcher.CSSPatcher do
+defmodule MoonUI.Patcher.CSSPatcher do
   @moduledoc false
 
   # When used in body, ensures dark and light mode work correctly

@@ -1,6 +1,6 @@
-defmodule SaladUI.Slider do
+defmodule MoonUI.Slider do
   @moduledoc false
-  use SaladUI, :component
+  use MoonUI, :component
 
   @doc """
   Render Slider range input

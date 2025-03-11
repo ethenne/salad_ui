@@ -1,6 +1,6 @@
-defmodule SaladUI.Skeleton do
+defmodule MoonUI.Skeleton do
   @moduledoc false
-  use SaladUI, :component
+  use MoonUI, :component
 
   @doc """
   Render skeleton

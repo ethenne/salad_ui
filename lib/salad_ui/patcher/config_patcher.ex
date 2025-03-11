@@ -1,4 +1,4 @@
-defmodule SaladUI.Patcher.ConfigPatcher do
+defmodule MoonUI.Patcher.ConfigPatcher do
   @moduledoc false
 
   def patch(config_path, opts \\ []) do

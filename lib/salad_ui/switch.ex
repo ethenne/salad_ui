@@ -1,6 +1,6 @@
-defmodule SaladUI.Switch do
+defmodule MoonUI.Switch do
   @moduledoc false
-  use SaladUI, :component
+  use MoonUI, :component
 
   @doc """
   Implement checkbox input component

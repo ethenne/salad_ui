@@ -1,4 +1,4 @@
-defmodule SaladUI.Accordion do
+defmodule MoonUI.Accordion do
   @moduledoc """
   Accordion component for displaying collapsible content.
 
@@ -31,7 +31,7 @@ defmodule SaladUI.Accordion do
     </.accordion_item>
   </.accordion>
   """
-  use SaladUI, :component
+  use MoonUI, :component
 
   attr :class, :string, default: nil
   slot :inner_block, required: true

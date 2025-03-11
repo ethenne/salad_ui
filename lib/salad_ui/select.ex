@@ -1,10 +1,10 @@
-defmodule SaladUI.Select do
+defmodule MoonUI.Select do
   @moduledoc """
   A form input designed for value selection: in its collapsed state, it reveals the presently chosen option, and upon expansion, it presents a scrollable list of predetermined choices for the user's selection.
 
   In a collapsed state, it reveals the currently selected option, and upon expansion, it displays a scrollable list of predefined choices for the user's selection.
   """
-  use SaladUI, :component
+  use MoonUI, :component
 
   attr(:id, :any, default: nil)
   attr(:field, Phoenix.HTML.FormField, doc: "a form field struct retrieved from the form, for example: @form[:email]")

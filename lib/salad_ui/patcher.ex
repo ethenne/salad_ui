@@ -1,16 +1,16 @@
-defmodule SaladUI.Patcher do
+defmodule MoonUI.Patcher do
   @moduledoc """
   Provides functionality to patch various configuration and source files in Phoenix projects.
 
-  This module is intended to be used by the CLI during the installation of `SaladUI` in a project.
+  This module is intended to be used by the CLI during the installation of `MoonUI` in a project.
   It handles patching of config files, Tailwind CSS configuration, CSS files, and JavaScript files.
   """
 
-  alias SaladUI.Patcher.ConfigPatcher
-  alias SaladUI.Patcher.CSSPatcher
-  alias SaladUI.Patcher.ElixirPatcher
-  alias SaladUI.Patcher.JSPatcher
-  alias SaladUI.Patcher.TailwindPatcher
+  alias MoonUI.Patcher.ConfigPatcher
+  alias MoonUI.Patcher.CSSPatcher
+  alias MoonUI.Patcher.ElixirPatcher
+  alias MoonUI.Patcher.JSPatcher
+  alias MoonUI.Patcher.TailwindPatcher
 
   @doc """
   Patches the Elixir project configuration file.

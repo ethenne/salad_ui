@@ -1,8 +1,8 @@
-defmodule SaladUI.CardTest do
+defmodule MoonUI.CardTest do
   use ComponentCase
 
-  import SaladUI.Button
-  import SaladUI.Card
+  import MoonUI.Button
+  import MoonUI.Card
 
   describe "Test Card" do
     test "It renders card header correctly" do

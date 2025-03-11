@@ -1,6 +1,6 @@
-defmodule SaladUI.Textarea do
+defmodule MoonUI.Textarea do
   @moduledoc false
-  use SaladUI, :component
+  use MoonUI, :component
 
   @doc """
   Displays a form textarea

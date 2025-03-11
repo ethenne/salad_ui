@@ -1,7 +1,7 @@
-defmodule SaladUI.AlertDialogTest do
+defmodule MoonUI.AlertDialogTest do
   use ComponentCase
 
-  import SaladUI.AlertDialog
+  import MoonUI.AlertDialog
 
   # Helper function to set up assigns
   defp assign_builder(assigns \\ %{}) do

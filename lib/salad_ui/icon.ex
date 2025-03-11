@@ -1,4 +1,4 @@
-defmodule SaladUI.Icon do
+defmodule MoonUI.Icon do
   @moduledoc """
   Renders a [Heroicon](https://heroicons.com).
 
@@ -17,7 +17,7 @@ defmodule SaladUI.Icon do
       <.icon name="hero-arrow-path" class="ml-1 w-3 h-3 animate-spin" />
   """
 
-  use SaladUI, :component
+  use MoonUI, :component
 
   attr :name, :string, required: true
   attr :class, :string, default: ""

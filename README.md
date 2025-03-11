@@ -1,38 +1,34 @@
 <p align="center">
-    <a href="https://salad-storybook.fly.dev/" alt="SaladUI Logo">
-    <img src="https://github.com/bluzky/salad_ui/blob/main/docs/images/SaladUI_logo.png?raw=true" height="120"/></a>
+    <a href="https://Moon-storybook.fly.dev/" alt="MoonUI Logo">
+    <img src="https://github.com/bluzky/Moon_ui/blob/main/docs/images/MoonUI_logo.png?raw=true" height="120"/></a>
 </p>
 <h4 align="center">
     A collection of Live View components inspired by shadcn
 </h4>
 
 <div align="center">
-    <a href="https://salad-storybook.fly.dev/">Demo</a> |
-    <a href="https://hexdocs.pm/salad_ui/readme.html">Documentation</a> |
+    <a href="https://moon-storybook.fly.dev/">Demo</a> |
+    <a href="https://hexdocs.pm/moon_ui/readme.html">Documentation</a> |
     <a href="https://ko-fi.com/bluzky">Support project</a>
 </div>
 <br></br>
 
 <div align="center">
-<img src="https://github.com/bluzky/salad_ui/actions/workflows/tests.yml/badge.svg" alt="Tests">
-<a href="https://hex.pm/packages/salad_ui"><img src="https://img.shields.io/hexpm/v/salad_ui.svg" alt="Module Version"></a>
-<a href="https://hexdocs.pm/salad_ui/"><img src="https://img.shields.io/badge/hex-docs-lightgreen.svg" alt="Hex Docs"></a>
-<a href="https://hex.pm/packages/salad_ui"><img src="https://img.shields.io/hexpm/dt/salad_ui.svg" alt="Total Download"></a>
-<a href="https://github.com/bluzky/salad_ui/commits/main"><img src="https://img.shields.io/github/last-commit/bluzky/salad_ui.svg" alt="Last Updated"></a>
+<img src="https://github.com/bluzky/moon_ui/actions/workflows/tests.yml/badge.svg" alt="Tests">
+<a href="https://hex.pm/packages/moon_ui"><img src="https://img.shields.io/hexpm/v/moon_ui.svg" alt="Module Version"></a>
+<a href="https://hexdocs.pm/moon_ui/"><img src="https://img.shields.io/badge/hex-docs-lightgreen.svg" alt="Hex Docs"></a>
+<a href="https://hex.pm/packages/moon_ui"><img src="https://img.shields.io/hexpm/dt/moon_ui.svg" alt="Total Download"></a>
+<a href="https://github.com/bluzky/moon_ui/commits/main"><img src="https://img.shields.io/github/last-commit/bluzky/moon_ui.svg" alt="Last Updated"></a>
 </div>
-
-## [Demo storybook](https://salad-storybook.fly.dev/)
-
-<a href='https://ko-fi.com/F1F1CEZ91' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://storage.ko-fi.com/cdn/kofi2.png?v=6' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
 
 ## Installation
 
-1. Add `salad_ui` to your `mix.exs`
+1. Add `moon_ui` to your `mix.exs`
 
 ```elixir
 def deps do
   [
-    {:salad_ui, "~> 0.14"},
+    {:moon_ui, "~> 0.14"},
   ]
 end
 ```
@@ -46,30 +42,30 @@ children = [
 ]
 ```
 
-3. Setup `salad_ui`
+3. Setup `moon_ui`
 
-3.1 **Using `salad_ui` as part of your project:**
+3.1 **Using `moon_ui` as part of your project:**
 
-> This way you can install only components that you want to use or you want to edit SaladUI's component source code to fit your need.
-> If you just want to use SaladUI's components, see **Using as library** below.
+> This way you can install only components that you want to use or you want to edit MoonUI's component source code to fit your need.
+> If you just want to use MoonUI's components, see **Using as library** below.
 
-- Init Salad UI in your project
+- Init Moon UI in your project
 
 ```
 #> cd your_project
-#> mix salad.init
+#> mix moon.init
 
 # install some components
-#> mix salad.add label button
+#> mix moon.add label button
 ```
 
-3.2 **Using `salad_ui` as a library:**
+3.2 **Using `Moon_ui` as a library:**
 
-- Init Salad UI in your project with option `--as-lib`
+- Init Moon UI in your project with option `--as-lib`
 
 ```
 #> cd your_project
-#> mix salad.init --as-lib
+#> mix moon.init --as-lib
 ```
 
 - Using in your project
@@ -77,7 +73,7 @@ children = [
 ```elixir
 defmodule MyModule do
     # import any component you need
-    import SaladUI.Button
+    import MoonUI.Button
 
     def render(_) do
       ~H"""
@@ -92,19 +88,19 @@ end
 1. Custom error translate function
 
 ```elixir
-config :salad_ui, :error_translator_function, {MyAppWeb.CoreComponents, :translate_error}
+config :moon_ui, :error_translator_function, {MyAppWeb.CoreComponents, :translate_error}
 ```
 
 ## 🛠️ Development
 
-Here is how to start develop SaladUI on local machine.
+Here is how to start develop MoonUI on local machine.
 
 1. Clone this repo
-2. Clone `https://github.com/bluzky/salad_storybook` in the same directory with **Salad UI**
+2. Clone `https://github.com/bluzky/moon_storybook` in the same directory with **Moon UI**
 3. Start storybook
 
 ```
-cd salad_storybook
+cd moon_storybook
 mix phx.server
 ```
 
@@ -168,8 +164,8 @@ It's also important to note that you must format your code with `mix format` bef
 ## 🌟 Contributors
 
 <p align="center">
-    <a href="https://github.com/bluzky/salad_ui/graphs/contributors">
-        <img src="https://contrib.rocks/image?repo=bluzky/salad_ui&max=300&columns=14" width="600"/></a>
+    <a href="https://github.com/bluzky/moon_ui/graphs/contributors">
+        <img src="https://contrib.rocks/image?repo=bluzky/moon_ui&max=300&columns=14" width="600"/></a>
 </p>
 
 ## 😘 Credits

@@ -1,7 +1,7 @@
-defmodule SaladUI.Patcher.CSSPatcherTest do
+defmodule MoonUI.Patcher.CSSPatcherTest do
   use ExUnit.Case
 
-  alias SaladUI.Patcher.CSSPatcher
+  alias MoonUI.Patcher.CSSPatcher
 
   @temp_dir "test/temp"
   @css_file "#{@temp_dir}/app.css"

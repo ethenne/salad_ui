@@ -1,15 +1,16 @@
-defmodule SaladUI.MixProject do
+defmodule MoonUI.MixProject do
   use Mix.Project
 
+  # TODO: add moon_ui repo and maintainers
   def project do
     [
-      app: :salad_ui,
+      app: :moon_ui,
       version: "0.14.8",
       elixir: "~> 1.14",
       elixirc_paths: elixirc_paths(Mix.env()),
       start_permanent: Mix.env() == :prod,
       deps: deps(),
-      name: "SaladUI",
+      name: "MoonUI",
       description: description(),
       source_url: "https://github.com/bluzky/salad_ui",
       docs: docs(),
@@ -36,11 +37,12 @@ defmodule SaladUI.MixProject do
     ]
   end
 
+  # TODO: add moon_ui repo and maintainers
   defp package do
     [
       maintainers: ["Dung Nguyen"],
       licenses: ["MIT"],
-      links: %{"GitHub" => "https://github.com/bluzky/salad_ui"},
+      links: %{"GitHub" => "https://github.com/bluzky/soon_ui"},
       files: ~w(lib assets/*.css priv .formatter.exs mix.exs README*)
     ]
   end

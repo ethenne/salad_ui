@@ -1,8 +1,8 @@
-defmodule SaladUI.Dialog do
+defmodule MoonUI.Dialog do
   @moduledoc """
   Implement of Dialog components from https://ui.shadcn.com/docs/components/dialog
   """
-  use SaladUI, :component
+  use MoonUI, :component
 
   @doc """
   Dialog component

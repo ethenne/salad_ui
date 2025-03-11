@@ -1,7 +1,7 @@
-defmodule SaladUI.PopoverTest do
+defmodule MoonUI.PopoverTest do
   use ComponentCase
 
-  import SaladUI.Popover
+  import MoonUI.Popover
 
   describe "test popover" do
     test "popover_trigger" do

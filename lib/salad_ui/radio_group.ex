@@ -1,6 +1,6 @@
-defmodule SaladUI.RadioGroup do
+defmodule MoonUI.RadioGroup do
   @moduledoc false
-  use SaladUI, :component
+  use MoonUI, :component
 
   @doc """
   Radio input group component

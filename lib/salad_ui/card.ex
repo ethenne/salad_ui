@@ -1,8 +1,8 @@
-defmodule SaladUI.Card do
+defmodule MoonUI.Card do
   @moduledoc """
   Implement of card components from https://ui.shadcn.com/docs/components/card
   """
-  use SaladUI, :component
+  use MoonUI, :component
 
   @doc """
   Card component

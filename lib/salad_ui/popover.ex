@@ -1,4 +1,4 @@
-defmodule SaladUI.Popover do
+defmodule MoonUI.Popover do
   @moduledoc """
   Implement Popover component
 
@@ -6,7 +6,7 @@ defmodule SaladUI.Popover do
       <.popover>
         <.popover_trigger target="my-id">
           <.button variant="link">
-            @salad_ui
+            @Moon_ui
           </.button>
         </.popover_trigger>
         <.popover_content id="my-id" side="left">
@@ -14,7 +14,7 @@ defmodule SaladUI.Popover do
         </.popover_content>
       </.popover>
   """
-  use SaladUI, :component
+  use MoonUI, :component
 
   @doc """
   Render popover wrapper

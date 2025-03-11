@@ -1,7 +1,7 @@
-defmodule SaladUI.HoverCardTest do
+defmodule MoonUI.HoverCardTest do
   use ComponentCase
 
-  import SaladUI.HoverCard
+  import MoonUI.HoverCard
 
   describe "test hover_card" do
     test "hover_card_trigger" do

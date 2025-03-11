@@ -1,7 +1,7 @@
-defmodule SaladUI.Patcher.ConfigPatcherTest do
+defmodule MoonUI.Patcher.ConfigPatcherTest do
   use ExUnit.Case
 
-  alias SaladUI.Patcher.ConfigPatcher
+  alias MoonUI.Patcher.ConfigPatcher
 
   @temp_dir "tmp/test"
   @config_file Path.join(@temp_dir, "config.exs")
@@ -13,7 +13,7 @@ defmodule SaladUI.Patcher.ConfigPatcherTest do
   end
 
   describe "Test config patcher" do
-    test "patch/2 adds salad_ui config when it's missing" do
+    test "patch/2 adds Moon_ui config when it's missing" do
       initial_content = """
       import Config
       """
@@ -21,19 +21,19 @@ defmodule SaladUI.Patcher.ConfigPatcherTest do
       File.write!(@config_file, initial_content)
 
       configs_to_add = [
-        salad_ui: %{
-          description: "Path to install SaladUI components",
+        Moon_ui: %{
+          description: "Path to install MoonUI components",
           values: [components_path: "Path.join(File.cwd!(), \"#{@components_path}\")"]
         }
       ]
 
       ConfigPatcher.patch(@config_file, configs: configs_to_add)
 
-      assert File.read!(@config_file) =~ "config :salad_ui,"
+      assert File.read!(@config_file) =~ "config :Moon_ui,"
       assert File.read!(@config_file) =~ "components_path: Path.join(File.cwd!(), \"#{@components_path}\")"
     end
 
-    test "patch/2 adds both salad_ui configs when they're missing" do
+    test "patch/2 adds both Moon_ui configs when they're missing" do
       initial_content = """
       import Config
       """
@@ -41,27 +41,27 @@ defmodule SaladUI.Patcher.ConfigPatcherTest do
       File.write!(@config_file, initial_content)
 
       configs_to_add = [
-        salad_ui: %{
-          description: "Path to install SaladUI components",
+        Moon_ui: %{
+          description: "Path to install MoonUI components",
           values: [components_path: "Path.join(File.cwd!(), \"#{@components_path}\")"]
         }
       ]
 
       ConfigPatcher.patch(@config_file, configs: configs_to_add)
 
-      assert File.read!(@config_file) =~ "config :salad_ui,"
+      assert File.read!(@config_file) =~ "config :Moon_ui,"
       assert File.read!(@config_file) =~ "components_path: Path.join(File.cwd!(), \"#{@components_path}\")"
     end
 
     test "patch/2 doesn't add configs when they already exist" do
       initial_content = """
       import Config
-      config :salad_ui, components_path: "/some/path"
+      config :Moon_ui, components_path: "/some/path"
       """
 
       configs_to_add = [
-        salad_ui: %{
-          description: "Path to install SaladUI components",
+        Moon_ui: %{
+          description: "Path to install MoonUI components",
           values: [components_path: "Path.join(File.cwd!(), \"#{@components_path}\")"]
         }
       ]
@@ -83,8 +83,8 @@ defmodule SaladUI.Patcher.ConfigPatcherTest do
       File.write!(@config_file, initial_content)
 
       configs_to_add = [
-        salad_ui: %{
-          description: "Path to install SaladUI components",
+        Moon_ui: %{
+          description: "Path to install MoonUI components",
           values: [components_path: "Path.join(File.cwd!(), \"#{@components_path}\")"]
         }
       ]
@@ -92,7 +92,7 @@ defmodule SaladUI.Patcher.ConfigPatcherTest do
       ConfigPatcher.patch(@config_file, configs: configs_to_add)
 
       content = File.read!(@config_file)
-      assert content =~ "config :salad_ui,"
+      assert content =~ "config :Moon_ui,"
       assert String.ends_with?(content, "import_config \"#{Mix.env()}.exs\"\n")
     end
   end

@@ -1,10 +1,10 @@
-defmodule SaladUI.AccordionTest do
+defmodule MoonUI.AccordionTest do
   @moduledoc """
   This is test for each accordion function component
   """
   use ComponentCase
 
-  import SaladUI.Accordion
+  import MoonUI.Accordion
 
   test "It renders accordion correctly" do
     assigns = %{}

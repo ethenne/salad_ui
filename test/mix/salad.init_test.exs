@@ -1,11 +1,11 @@
-defmodule Mix.Tasks.Salad.InitTest do
-  use SaladUI.Test.MixTaskCase, async: true
+defmodule Mix.Tasks.Moon.InitTest do
+  use MoonUI.Test.MixTaskCase, async: true
 
-  alias Mix.Tasks.Salad.Init
+  alias Mix.Tasks.Moon.Init
 
   @tmp_dir "test_init"
   @default_components_path Path.join(["lib/test_app_web/components"])
-  @application_file_path "lib/salad_ui/application.ex"
+  @application_file_path "lib/Moon_ui/application.ex"
 
   setup do
     # The shell asks for a path to install components.
@@ -20,10 +20,10 @@ defmodule Mix.Tasks.Salad.InitTest do
     :ok
   end
 
-  test "run/1 initializes SaladUI" do
+  test "run/1 initializes MoonUI" do
     in_tmp(@tmp_dir, fn ->
       # Create a mock mix.exs file
-      File.write!("mix.exs", "defmodule SaladUI.MixProject do use Mix.Project\nend")
+      File.write!("mix.exs", "defmodule MoonUI.MixProject do use Mix.Project\nend")
 
       File.mkdir_p!("config")
       File.mkdir_p!(Path.dirname(@application_file_path))
@@ -40,7 +40,7 @@ defmodule Mix.Tasks.Salad.InitTest do
       File.write!("assets/tailwind.config.js", "module.exports = {\n  // Original tailwind config\n}\n")
 
       # Mock the _build directory structure
-      priv_dir = "_build/test/lib/salad_ui/priv/static/assets"
+      priv_dir = "_build/test/lib/Moon_ui/priv/static/assets"
       File.mkdir_p!(priv_dir)
       File.write!(Path.join(priv_dir, "tailwind.colors.json"), "{}")
       File.write!(Path.join(priv_dir, "server-events.js"), "// server events")
@@ -53,7 +53,7 @@ defmodule Mix.Tasks.Salad.InitTest do
 
       assert File.exists?(@default_components_path)
       dev_config_content = File.read!("config/dev.exs")
-      assert dev_config_content =~ "config :salad_ui, components_path:"
+      assert dev_config_content =~ "config :Moon_ui, components_path:"
       assert dev_config_content =~ "Path.join(File.cwd!(), \"#{@default_components_path}\")"
 
       application_file_content = File.read!(@application_file_path)
@@ -63,8 +63,8 @@ defmodule Mix.Tasks.Salad.InitTest do
       assert File.read!("assets/js/app.js") =~ "// server events"
       assert File.exists?("assets/tailwind.colors.json")
       assert File.read!("assets/tailwind.config.js") =~ "require(\"./tailwind.colors.json\")"
-      assert File.read!("lib/test_app_web/components/helpers.ex") =~ "defmodule SaladUiWeb.ComponentHelpers do"
-      assert File.read!("lib/test_app_web/components/component.ex") =~ "defmodule SaladUiWeb.Component do"
+      assert File.read!("lib/test_app_web/components/helpers.ex") =~ "defmodule MoonUiWeb.ComponentHelpers do"
+      assert File.read!("lib/test_app_web/components/component.ex") =~ "defmodule MoonUiWeb.Component do"
     end)
   end
 

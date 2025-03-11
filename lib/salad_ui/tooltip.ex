@@ -1,6 +1,6 @@
-defmodule SaladUI.Tooltip do
+defmodule MoonUI.Tooltip do
   @moduledoc false
-  use SaladUI, :component
+  use MoonUI, :component
 
   @doc """
   Render a tooltip

@@ -2,7 +2,7 @@
 
 **Changes**
 - Implement Sidebar component
-- Introduce `as_child` tag to merge multiple `SaladUI` tag
+- Introduce `as_child` tag to merge multiple `MoonUI` tag
 - Introduce `dynamic` tag which allow dynamic rendering a tag.
 
 **Breaking changes**
@@ -12,7 +12,7 @@
 # 0.9.0
 
 - ashkan117: fix: Explicitly include the <a> attributes to avoid lsp warning
-- selenil: feature: Add mix task for init & install salad_ui components
+- selenil: feature: Add mix task for init & install moon_ui components
 
 - forest: fix input warning
 - bluzky: fix overriding input name/value not working

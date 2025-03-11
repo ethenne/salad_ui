@@ -1,7 +1,7 @@
-defmodule SaladUi.ProgressTest do
+defmodule MoonUi.ProgressTest do
   use ComponentCase
 
-  import SaladUI.Progress
+  import MoonUI.Progress
 
   describe "Test Progress" do
     test "IT renders progress component correctly" do

@@ -1,7 +1,7 @@
-defmodule SaladUI.CollapsibleTest do
+defmodule MoonUI.CollapsibleTest do
   use ComponentCase
 
-  import SaladUI.Collapsible
+  import MoonUI.Collapsible
 
   describe "collapsible/1" do
     test "renders collapsible component with required attributes" do

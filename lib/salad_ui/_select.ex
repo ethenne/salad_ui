@@ -1,4 +1,4 @@
-# defmodule SaladUI._Select() do
+# defmodule MoonUI._Select() do
 #   @moduledoc """
 #   Implement of select components from https://ui.shadcn.com/docs/components/select
 
@@ -25,7 +25,7 @@
 #         <.button type="submit">Submit</.button>
 #       </form>
 #   """
-#   use SaladUI, :component
+#   use MoonUI, :component
 
 #   @doc """
 #   Ready to use select component with all required parts.

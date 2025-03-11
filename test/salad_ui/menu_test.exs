@@ -1,7 +1,7 @@
-defmodule SaladUi.MenuTest do
+defmodule MoonUi.MenuTest do
   use ComponentCase
 
-  import SaladUI.Menu
+  import MoonUI.Menu
 
   describe "Menu: " do
     test "It renderes menu_item correctly" do

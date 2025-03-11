@@ -1,6 +1,6 @@
-defmodule SaladUI.Chip do
+defmodule MoonUI.Chip do
   @moduledoc false
-  use SaladUI, :component
+  use MoonUI, :component
 
   @doc """
   Chip component, A two-state button that can be either on or off.

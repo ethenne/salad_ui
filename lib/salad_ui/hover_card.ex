@@ -1,4 +1,4 @@
-defmodule SaladUI.HoverCard do
+defmodule MoonUI.HoverCard do
   @moduledoc """
   Implement hover card component
 
@@ -6,7 +6,7 @@ defmodule SaladUI.HoverCard do
       <.hover_card>
         <.hover_card_trigger>
           <.button variant="link">
-            @salad_ui
+            @Moon_ui
           </.button>
         </.hover_card_trigger>
         <.hover_card_content>
@@ -14,7 +14,7 @@ defmodule SaladUI.HoverCard do
         </.hover_card_content>
       </.hover_card>
   """
-  use SaladUI, :component
+  use MoonUI, :component
 
   @doc """
   Render hover card wrapper

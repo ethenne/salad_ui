@@ -1,10 +1,10 @@
-defmodule SaladUI.Patcher.ElixirPatcherTest do
+defmodule MoonUI.Patcher.ElixirPatcherTest do
   use ExUnit.Case, async: true
 
-  alias SaladUI.Patcher.ElixirPatcher
+  alias MoonUI.Patcher.ElixirPatcher
 
   @temp_dir "tmp/test"
-  @application_file_path Path.join(@temp_dir, "lib/salad_ui/application.ex")
+  @application_file_path Path.join(@temp_dir, "lib/Moon_ui/application.ex")
 
   setup do
     File.mkdir_p!(Path.dirname(@application_file_path))

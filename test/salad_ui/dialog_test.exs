@@ -1,10 +1,10 @@
-defmodule SaladUI.DialogTest do
+defmodule MoonUI.DialogTest do
   use ComponentCase
 
-  import SaladUI.Button
-  import SaladUI.Dialog
-  import SaladUI.Input
-  import SaladUI.Label
+  import MoonUI.Button
+  import MoonUI.Dialog
+  import MoonUI.Input
+  import MoonUI.Label
 
   describe "Test Dialog" do
     test "It renders dialog header correctly" do

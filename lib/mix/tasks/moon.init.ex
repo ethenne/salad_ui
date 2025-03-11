@@ -1,17 +1,17 @@
-defmodule Mix.Tasks.Salad.Init do
+defmodule Mix.Tasks.Moon.Init do
   @moduledoc """
-  A Mix task for initializing SaladUI in a project and configuring it to use a color theme.
+  A Mix task for initializing MoonUI in a project and configuring it to use a color theme.
 
   Commands:
-    mix salad.init         : Add all necessary configuration to be able to install SaladUI components
-    mix salad.init --as-lib   : Add all necessary configuration to use SaladUI in a library
-    mix salad.init --help    : Print this help message
+    mix Moon.init         : Add all necessary configuration to be able to install MoonUI components
+    mix Moon.init --as-lib   : Add all necessary configuration to use MoonUI in a library
+    mix Moon.init --help    : Print this help message
   """
   use Mix.Task
 
-  import SaladUi.TasksHelpers
+  import MoonUi.TasksHelpers
 
-  alias SaladUI.Patcher
+  alias MoonUI.Patcher
 
   @default_components_path "lib/%APP_NAME%_web/components"
   @color_schemes ~w(zinc slate stone gray neutral red rose orange green blue yellow violet)
@@ -51,9 +51,9 @@ defmodule Mix.Tasks.Salad.Init do
          :ok <- maybe_write_component_module(component_path, app_name, opts),
          :ok <- install_tailwind_animate(opts) do
       if opts[:as_lib] do
-        Mix.shell().info("Done. Now you can use any component by `import SaladUI.<ComponentName>` in your project.")
+        Mix.shell().info("Done. Now you can use any component by `import MoonUI.<ComponentName>` in your project.")
       else
-        Mix.shell().info("Done. Now you can add components by running mix salad.add <component_name>")
+        Mix.shell().info("Done. Now you can add components by running mix Moon.add <component_name>")
       end
     else
       {:error, reason} -> Mix.shell().error("Error during setup: #{reason}")
@@ -100,8 +100,8 @@ defmodule Mix.Tasks.Salad.Init do
     dev_config_path = Path.join(File.cwd!(), "config/dev.exs")
 
     components_config = [
-      salad_ui: %{
-        description: "Path to install SaladUI components",
+      Moon_ui: %{
+        description: "Path to install MoonUI components",
         values: [components_path: "Path.join(File.cwd!(), \"#{component_path}\")"]
       }
     ]
@@ -196,7 +196,7 @@ defmodule Mix.Tasks.Salad.Init do
 
     source_code =
       Regex.replace(
-        ~r/defmodule SaladUI\.Helpers/,
+        ~r/defmodule MoonUI\.Helpers/,
         File.read!(source_path),
         "defmodule #{module_name}Web.ComponentHelpers"
       )
@@ -208,7 +208,7 @@ defmodule Mix.Tasks.Salad.Init do
 
   defp maybe_write_component_module(component_path, app_name, _opts) do
     Mix.shell().info("Writing component module")
-    source_path = Path.join(:code.priv_dir(:salad_ui), "templates/component.eex")
+    source_path = Path.join(:code.priv_dir(:Moon_ui), "templates/component.eex")
 
     target_path = Path.join(component_path, "component.ex")
     module_name = Macro.camelize(app_name)
@@ -252,7 +252,7 @@ defmodule Mix.Tasks.Salad.Init do
   end
 
   defp build_assets_path(env) do
-    ["_build", env, "lib/salad_ui/priv/static/assets"]
+    ["_build", env, "lib/Moon_ui/priv/static/assets"]
     |> Path.join()
     |> Path.expand()
   end

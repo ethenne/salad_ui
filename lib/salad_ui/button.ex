@@ -1,6 +1,6 @@
-defmodule SaladUI.Button do
+defmodule MoonUI.Button do
   @moduledoc false
-  use SaladUI, :component
+  use MoonUI, :component
 
   @doc """
   Renders a button.

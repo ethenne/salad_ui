@@ -1,7 +1,7 @@
-defmodule SaladUI.LabelTest do
+defmodule MoonUI.LabelTest do
   use ComponentCase
 
-  import SaladUI.Label
+  import MoonUI.Label
 
   describe "Test Label" do
     test "It should render label correctly" do

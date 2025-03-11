@@ -1,7 +1,7 @@
-defmodule SaladUi.PaginationTest do
+defmodule MoonUi.PaginationTest do
   use ComponentCase
 
-  import SaladUI.Pagination
+  import MoonUI.Pagination
 
   describe "Test Pagination:" do
     test "It renders pagination_content correctly" do

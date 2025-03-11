@@ -1,6 +1,6 @@
-defmodule SaladUI.Avatar do
+defmodule MoonUI.Avatar do
   @moduledoc false
-  use SaladUI, :component
+  use MoonUI, :component
 
   attr :class, :string, default: nil
   attr :rest, :global

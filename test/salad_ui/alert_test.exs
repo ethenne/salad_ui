@@ -1,7 +1,7 @@
-defmodule SaladUI.AlertTest do
+defmodule MoonUI.AlertTest do
   use ComponentCase
 
-  import SaladUI.Alert
+  import MoonUI.Alert
 
   describe "Test Alerting" do
     test "it renders default alert correctly" do

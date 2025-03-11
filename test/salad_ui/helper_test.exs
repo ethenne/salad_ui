@@ -1,7 +1,7 @@
-defmodule SaladUI.HelperTest do
+defmodule MoonUI.HelperTest do
   use ExUnit.Case, async: true
 
-  alias SaladUI.Helpers
+  alias MoonUI.Helpers
 
   @vertical_align_classes %{
     "start" => "top-0",
@@ -105,7 +105,7 @@ defmodule SaladUI.HelperTest do
   end
 
   test "build error with custom translation function" do
-    Application.put_env(:salad_ui, :error_translator_function, {__MODULE__, :translate_error})
+    Application.put_env(:Moon_ui, :error_translator_function, {__MODULE__, :translate_error})
 
     assigns = %{
       __changed__: %{},

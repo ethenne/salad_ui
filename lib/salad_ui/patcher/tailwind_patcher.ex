@@ -1,4 +1,4 @@
-defmodule SaladUI.Patcher.TailwindPatcher do
+defmodule MoonUI.Patcher.TailwindPatcher do
   @moduledoc false
 
   # TODO: Improve the formatting of the generated code,
@@ -130,9 +130,9 @@ defmodule SaladUI.Patcher.TailwindPatcher do
     )
   end
 
-  # add content directory to SaladUI library so Tailwind will extract css from lib too
+  # add content directory to MoonUI library so Tailwind will extract css from lib too
   defp add_content_watch(content) do
-    content_pattern = "\"../deps/salad_ui/lib/**/*.ex\""
+    content_pattern = "\"../deps/Moon_ui/lib/**/*.ex\""
     Regex.replace(~r/content:\s*\[/, content, "content: [\n#{content_pattern},")
   end
 end

@@ -1,7 +1,7 @@
-defmodule SaladUI.Patcher.TailwindPatcherTest do
+defmodule MoonUI.Patcher.TailwindPatcherTest do
   use ExUnit.Case
 
-  alias SaladUI.Patcher.TailwindPatcher
+  alias MoonUI.Patcher.TailwindPatcher
 
   @temp_dir "test/temp"
   @tailwind_config "#{@temp_dir}/tailwind.config.js"

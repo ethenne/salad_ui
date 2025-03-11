@@ -1,9 +1,9 @@
-defmodule SaladUI.FormTest do
+defmodule MoonUI.FormTest do
   use ComponentCase
 
-  import SaladUI.Button
-  import SaladUI.Form
-  import SaladUI.Input
+  import MoonUI.Button
+  import MoonUI.Form
+  import MoonUI.Input
 
   describe "Test form components" do
     test "It renders form item correctly" do

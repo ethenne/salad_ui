@@ -1,4 +1,4 @@
-defmodule SaladUI.LiveChart do
+defmodule MoonUI.LiveChart do
   @moduledoc false
 
   use Phoenix.LiveComponent
@@ -28,11 +28,11 @@ defmodule SaladUI.LiveChart do
   end
 end
 
-defmodule SaladUI.Chart do
+defmodule MoonUI.Chart do
   @moduledoc """
   Chart component.
 
-  This component displays a chart using a live component for real-time updates. Data and configuration are passed as attributes, and the rendering is managed on the client side through a hook called `ChartHook`. This hook initializes, manages the lifecycle, and renders the chart using a chart library. `SaladUI` comes with [Chart.js](https://www.chartjs.org/) as default, but you can rewrite `ChartHook` to integrate another chart library.
+  This component displays a chart using a live component for real-time updates. Data and configuration are passed as attributes, and the rendering is managed on the client side through a hook called `ChartHook`. This hook initializes, manages the lifecycle, and renders the chart using a chart library. `MoonUI` comes with [Chart.js](https://www.chartjs.org/) as default, but you can rewrite `ChartHook` to integrate another chart library.
 
   ## Chart config
 
@@ -73,7 +73,7 @@ defmodule SaladUI.Chart do
 
   All data points that do not match any datasets will be ignored.
   """
-  use SaladUI, :component
+  use MoonUI, :component
 
   attr :id, :string, required: true
   attr :name, :string, default: "", doc: "name of the chart for screen readers"
@@ -83,7 +83,7 @@ defmodule SaladUI.Chart do
   def chart(assigns) do
     ~H"""
     <.live_component
-      module={SaladUI.LiveChart}
+      module={MoonUI.LiveChart}
       id={@id}
       name={@name}
       chart_config={@chart_config}

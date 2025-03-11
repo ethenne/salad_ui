@@ -1,10 +1,10 @@
-defmodule SaladUI.DropdownMenuTest do
+defmodule MoonUI.DropdownMenuTest do
   use ComponentCase
 
-  import SaladUI.Button
-  import SaladUI.DropdownMenu
-  import SaladUI.Icon
-  import SaladUI.Menu
+  import MoonUI.Button
+  import MoonUI.DropdownMenu
+  import MoonUI.Icon
+  import MoonUI.Menu
 
   describe "Test Dropdown menu" do
     test "It renders dropdown trigger correctly" do
