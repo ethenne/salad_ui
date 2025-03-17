@@ -20,13 +20,15 @@ defmodule MoonUI.Input do
 
   attr :type, :string,
     default: "text",
-    values: ~w(date datetime-local email file hidden month number password tel text time url week),
+    values:
+      ~w(date datetime-local email file hidden month number password tel text time url week),
     doc:
       "The type for the input field. Available list of types: date, datetime-local, email, file, hidden, month, number, password, tel, text, time, url, week. Default is text."
 
   attr :"default-value", :string, doc: "The default value for the input field"
 
-  attr :field, Phoenix.HTML.FormField, doc: "A form field struct retrieved from the form, for example: @form[:email]"
+  attr :field, Phoenix.HTML.FormField,
+    doc: "A form field struct retrieved from the form, for example: @form[:email]"
 
   attr :class, :string, default: ""
 
@@ -52,11 +54,9 @@ defmodule MoonUI.Input do
 
     ~H"""
     <div class={classes(["moon-form-group", @error && "text-destructive"])}>
-      <%= if @label && @label_position in ["right", "bottom"] do %>
         <label :if={@label} for={@id}>
           {@label}
         </label>
-      <% end %>
       <input class={classes(["moon-input", @class])} {@rest} disabled={@disabled} />
       <.hint hint={@hint} error={@error} disabled={@disabled} />
     </div>

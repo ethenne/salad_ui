@@ -38,7 +38,7 @@ defmodule MoonUI do
       import MoonUI.Chip
       import MoonUI.Collapsible
       import MoonUI.Dialog
-      import MoonUI.DropdownMenu
+      import MoonUI.Dropdown
       import MoonUI.Form
       import MoonUI.Helpers
       import MoonUI.HoverCard
@@ -57,7 +57,8 @@ defmodule MoonUI do
       import MoonUI.SegmentedControl
       import MoonUI.Select
       import MoonUI.Separator
-      import MoonUI.Sheet
+      import MoonUI.Drower
+      import MoonUI.BottomSheet
       import MoonUI.Sidebar
       import MoonUI.Skeleton
       import MoonUI.Slider
@@ -69,6 +70,10 @@ defmodule MoonUI do
       import MoonUI.Toggle
       import MoonUI.ToggleGroup
       import MoonUI.Tooltip
+      import MoonUI.IconButton
+      import MoonUI.List
+      import MoonUI.CircularProgress
+      import MoonUI.Snackbar
     end
   end
 end

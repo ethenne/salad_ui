@@ -1,4 +1,4 @@
-defmodule MoonUI.DropdownMenu do
+defmodule MoonUI.Dropdown do
   @moduledoc false
   use MoonUI, :component
 
@@ -10,38 +10,43 @@ defmodule MoonUI.DropdownMenu do
 
   ## Examples:
 
-      <.dropdown_menu>
-        <.dropdown_menu_trigger>
+      <.dropdown>
+        <.dropdown_trigger>
           <.button variant="outline">Open</.button>
-        </.dropdown_menu_trigger>
+        </.dropdown_trigger>
 
-        <.dropdown_menu_content>
-          <.dropdown_menu_label>Account</.dropdown_menu_label>
-          <.dropdown_menu_separator />
+        <.dropdown_content>
+          <.dropdown_label>Account</.dropdown_label>
+          <.dropdown_separator />
 
-          <.dropdown_menu_group>
-            <.dropdown_menu_item>
+          <.dropdown_group>
+            <.dropdown_item>
               Profile
-              <.dropdown_menu_shortcut>⌘P</.dropdown_menu_shortcut>
-            </.dropdown_menu_item>
-            <.dropdown_menu_item>
+              <.dropdown_shortcut>⌘P</.dropdown_shortcut>
+            </.dropdown_item>
+            <.dropdown_item>
               Billing
-              <.dropdown_menu_shortcut>⌘B</.dropdown_menu_shortcut>
-            </.dropdown_menu_item>
-            <.dropdown_menu_item>
+              <.dropdown_shortcut>⌘B</.dropdown_shortcut>
+            </.dropdown_item>
+            <.dropdown_item>
               Settings
-              <.dropdown_menu_shortcut>⌘S</.dropdown_menu_shortcut>
-            </.dropdown_menu_item>
-          </.dropdown_menu_group>
-        </.dropdown_menu_content>
-      </.dropdown_menu>
+              <.dropdown_shortcut>⌘S</.dropdown_shortcut>
+            </.dropdown_item>
+          </.dropdown_group>
+        </.dropdown_content>
+      </.dropdown>
   """
 
   attr :class, :string, default: nil
-  slot :inner_block, required: true
+  attr :size, :string, values: ~w(sm md lg xl), default: "md"
+  attr :error, :boolean, default: false
+  attr :disabled, :boolean, default: false
+  attr :value, :string, default: nil
   attr :rest, :global
 
-  def dropdown_menu(assigns) do
+  slot :inner_block, required: true
+
+  def dropdown(assigns) do
     ~H"""
     <div class={classes(["relative group inline-block", @class])} {@rest}>
       {render_slot(@inner_block)}
@@ -55,7 +60,7 @@ defmodule MoonUI.DropdownMenu do
 
   attr :rest, :global
 
-  def dropdown_menu_trigger(assigns) do
+  def dropdown_trigger(assigns) do
     ~H"""
     <.dynamic
       tag={@as_tag}
@@ -71,14 +76,30 @@ defmodule MoonUI.DropdownMenu do
   end
 
   attr :class, :string, default: nil
-  attr :side, :string, values: ["top", "right", "bottom", "left"], default: "bottom"
-  attr :align, :string, values: ["start", "center", "end"], default: "start"
+
+  attr :position, :string,
+    values: ~w(top-start top-end bottom-start bottom-end top bottom right left),
+    default: "left"
+
+  attr :multiple, :boolean, default: false
+
   slot :inner_block, required: true
   attr :rest, :global
 
-  def dropdown_menu_content(assigns) do
-    assigns =
-      assign(assigns, :variant_class, side_variant(assigns.side, assigns.align))
+  def dropdown_content(assigns) do
+    variant_class =
+      case assigns.position do
+        "top-start" -> "bottom-full mb-2 right-full mr-2"
+        "top-end" -> "bottom-full mb-2 left-full ml-2"
+        "bottom-start" -> "top-full mt-2 right-full mr-2"
+        "bottom-end" -> "top-full mt-2 left-full mr-2"
+        "top" -> "bottom-full mb-2"
+        "bottom" -> "top-full mt-2"
+        "right" -> "left-full ml-2"
+        "left" -> "right-full mr-2"
+      end
+
+    assigns = assign(assigns, :variant_class, variant_class)
 
     ~H"""
     <div
@@ -104,7 +125,7 @@ defmodule MoonUI.DropdownMenu do
   attr(:rest, :global)
   slot(:inner_block, required: true)
 
-  def dropdown_menu_shortcut(assigns) do
+  def dropdown_shortcut(assigns) do
     ~H"""
     <span
       class={

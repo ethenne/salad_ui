@@ -1,12 +1,12 @@
-/* v1.9.3 */
+/* v1.9.7 */
 *, ::before, ::after, ::backdrop {
 	--accordion-stroke: var(--dimension-border-none);
-	--alert-caution-stroke: var(--dimension-border-none);
-	--alert-discovery-stroke: var(--dimension-border-none);
-	--alert-info-stroke: var(--dimension-border-none);
-	--alert-negative-stroke: var(--dimension-border-none);
-	--alert-neutral-stroke: var(--dimension-border-none);
-	--alert-positive-stroke: var(--dimension-border-none);
+	--alert-caution-stroke: var(--dimension-border-default);
+	--alert-discovery-stroke: var(--dimension-border-default);
+	--alert-info-stroke: var(--dimension-border-default);
+	--alert-negative-stroke: var(--dimension-border-default);
+	--alert-neutral-stroke: var(--dimension-border-default);
+	--alert-positive-stroke: var(--dimension-border-default);
 	--authenticator-height: var(--dimension-space-64);
 	--authenticator-radius: var(--scale-xl-border-radius);
 	--authenticator-stroke: var(--dimension-border-default);
@@ -254,12 +254,13 @@
 	--select-radius-sm: var(--scale-sm-border-radius);
 	--select-radius-xl: var(--scale-xl-border-radius);
 	--select-stroke: var(--dimension-border-default);
-	--snackbar-caution-stroke: var(--dimension-border-none);
-	--snackbar-discovery-stroke: var(--dimension-border-none);
-	--snackbar-info-stroke: var(--dimension-border-none);
-	--snackbar-negative-stroke: var(--dimension-border-none);
-	--snackbar-neutral-stroke: var(--dimension-border-none);
-	--snackbar-positive-stroke: var(--dimension-border-none);
+	--snackbar-caution-stroke: var(--dimension-border-default);
+	--snackbar-discovery-stroke: var(--dimension-border-default);
+	--snackbar-info-stroke: var(--dimension-border-default);
+	--snackbar-negative-stroke: var(--dimension-border-default);
+	--snackbar-neutral-stroke: var(--dimension-border-default);
+	--snackbar-positive-stroke: var(--dimension-border-default);
+	--switch-padding-knob: var(--dimension-space-2);
 	--switch-stroke-selected: var(--dimension-border-none);
 	--switch-stroke-unselected: var(--dimension-border-none);
 	--tab-list-tab-radius-md: var(--scale-md-border-radius);

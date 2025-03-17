@@ -1,35 +1,35 @@
-defmodule MoonUI.DropdownMenuTest do
+defmodule MoonUI.DropdownTest do
   use ComponentCase
 
   import MoonUI.Button
-  import MoonUI.DropdownMenu
+  import MoonUI.Dropdown
   import MoonUI.Icon
   import MoonUI.Menu
 
-  describe "Test Dropdown menu" do
+  describe "Test Dropdown" do
     test "It renders dropdown trigger correctly" do
       assigns = %{}
 
       html =
         rendered_to_string(~H"""
-        <.dropdown_menu_trigger>
+        <.dropdown_trigger>
           <.button variant="outline">Click me</.button>
-        </.dropdown_menu_trigger>
+        </.dropdown_trigger>
         """)
 
       assert html =~ "Click me"
 
-      for css_class <- ~w(dropdown-menu-trigger peer) do
+      for css_class <- ~w(dropdown-trigger peer) do
         assert html =~ css_class
       end
     end
 
-    test "It renders dropdown menu content correctly" do
+    test "It renders dropdown content correctly" do
       assigns = %{}
 
       html =
         rendered_to_string(~H"""
-        <.dropdown_menu_content>
+        <.dropdown_content>
           <.menu class="w-56">
             <.menu_label>Account</.menu_label>
             <.menu_separator />
@@ -63,7 +63,7 @@ defmodule MoonUI.DropdownMenuTest do
               </.menu_item>
             </.menu_group>
           </.menu>
-        </.dropdown_menu_content>
+        </.dropdown_content>
         """)
 
       for css_class <-
@@ -72,17 +72,17 @@ defmodule MoonUI.DropdownMenuTest do
       end
     end
 
-    test "It renderes dropdown menu correctly" do
+    test "It renderes dropdown correctly" do
       assigns = %{}
 
       html =
         rendered_to_string(~H"""
         <div class="mt-24">
-          <.dropdown_menu>
-            <.dropdown_menu_trigger>
+          <.dropdown>
+            <.dropdown_trigger>
               <.button variant="outline">Click me</.button>
-            </.dropdown_menu_trigger>
-            <.dropdown_menu_content>
+            </.dropdown_trigger>
+            <.dropdown_content>
               <.menu class="w-56">
                 <.menu_label>Account</.menu_label>
                 <.menu_separator />
@@ -114,8 +114,8 @@ defmodule MoonUI.DropdownMenuTest do
                   </.menu_item>
                 </.menu_group>
               </.menu>
-            </.dropdown_menu_content>
-          </.dropdown_menu>
+            </.dropdown_content>
+          </.dropdown>
         </div>
         """)
 

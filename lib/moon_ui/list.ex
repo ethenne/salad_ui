@@ -1,48 +1,48 @@
-defmodule MoonUI.Menu do
+defmodule MoonUI.List do
   @moduledoc """
-  Implement menu components
+  Implement list components
   """
   use MoonUI, :component
 
   @doc """
-  Render menu
+  Render list
 
 
   ## Examples:
 
 
-      <.menu>
-        <.menu_label>Account</.menu_label>
-        <.menu_separator />
+      <.list>
+        <.list_label>Account</.list_label>
+        <.list_separator />
 
-        <.menu_group>
-          <.menu_item>
+        <.list_group>
+          <.list_item>
               Profile
-            <.menu_shortcut>⌘P</.menu_shortcut>
-          </.menu_item>
+            <.list_shortcut>⌘P</.list_shortcut>
+          </.list_item>
 
-          <.menu_item>
+          <.list_item>
               Billing
-            <.menu_shortcut>⌘B</.menu_shortcut>
-          </.menu_item>
+            <.list_shortcut>⌘B</.list_shortcut>
+          </.list_item>
 
-          <.menu_item>
+          <.list_item>
               Settings
-            <.menu_shortcut>⌘S</.menu_shortcut>
-          </.menu_item>
-        </.menu_group>
-      </.menu>
+            <.list_shortcut>⌘S</.list_shortcut>
+          </.list_item>
+        </.list_group>
+      </.list>
   """
 
   attr :class, :string, default: "top-0 left-full"
   slot :inner_block, required: true
   attr :rest, :global
 
-  def menu(assigns) do
+  def list(assigns) do
     ~H"""
     <div
       class={[
-        "moon-menu",
+        "moon-list",
         @class
       ]}
       {@rest}
@@ -57,7 +57,7 @@ defmodule MoonUI.Menu do
   slot :inner_block, required: true
   attr :rest, :global
 
-  def menu_item(assigns) do
+  def list_item(assigns) do
     ~H"""
     <div
       class={
@@ -80,7 +80,7 @@ defmodule MoonUI.Menu do
   slot :inner_block, required: true
   attr :rest, :global
 
-  def menu_label(assigns) do
+  def list_label(assigns) do
     ~H"""
     <div class={classes(["px-2 py-1.5 text-sm font-semibold", @inset && "pl-8", @class])} {@rest}>
       {render_slot(@inner_block)}
@@ -91,7 +91,7 @@ defmodule MoonUI.Menu do
   attr :class, :string, default: nil
   slot :inner_block
 
-  def menu_separator(assigns) do
+  def list_separator(assigns) do
     ~H"""
     <div role="separator" class={classes(["-mx-1 my-1 h-px bg-muted", @class])}>
       {render_slot(@inner_block)}
@@ -103,7 +103,7 @@ defmodule MoonUI.Menu do
   slot :inner_block, required: true
   attr :rest, :global
 
-  def menu_shortcut(assigns) do
+  def list_shortcut(assigns) do
     ~H"""
     <span class={classes(["ml-auto text-xs tracking-widest opacity-60", @class])} {@rest}>
       {render_slot(@inner_block)}
@@ -115,7 +115,7 @@ defmodule MoonUI.Menu do
   slot :inner_block, required: true
   attr :rest, :global
 
-  def menu_group(assigns) do
+  def list_group(assigns) do
     ~H"""
     <div class={classes([@class])} role="group" {@rest}>{render_slot(@inner_block)}</div>
     """

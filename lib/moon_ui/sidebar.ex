@@ -4,7 +4,7 @@ defmodule MoonUI.Sidebar do
 
   import MoonUI.Input
   import MoonUI.Separator
-  import MoonUI.Sheet
+  import MoonUI.Drower
   import MoonUI.Skeleton
   import MoonUI.Tooltip
 
@@ -21,7 +21,8 @@ defmodule MoonUI.Sidebar do
   slot(:inner_block, required: true)
 
   def sidebar_provider(assigns) do
-    assigns = assign(assigns, %{sidebar_width: @sidebar_width, sidebar_width_icon: @sidebar_width_icon})
+    assigns =
+      assign(assigns, %{sidebar_width: @sidebar_width, sidebar_width_icon: @sidebar_width_icon})
 
     ~H"""
     <div
@@ -51,7 +52,10 @@ defmodule MoonUI.Sidebar do
   Render
   """
 
-  attr :id, :string, required: true, doc: "The id of the sidebar, used for the trigger to identify the target sidebar"
+  attr :id, :string,
+    required: true,
+    doc: "The id of the sidebar, used for the trigger to identify the target sidebar"
+
   attr :side, :string, values: ~w(left right), default: "left"
   attr :variant, :string, values: ~w(sidebar floating inset), default: "sidebar"
   attr :collapsible, :string, values: ~w(offcanvas icon none), default: "offcanvas"
@@ -82,8 +86,8 @@ defmodule MoonUI.Sidebar do
     assigns = assign(assigns, :sidebar_width_mobile, @sidebar_width_mobile)
 
     ~H"""
-    <.sheet>
-      <.sheet_content
+    <.drower>
+      <.drower_content
         data-sidebar="sidebar"
         data-mobile="true"
         class="w-[--sidebar-width] bg-sidebar p-0 text-sidebar-foreground [&>button]:hidden"
@@ -100,8 +104,8 @@ defmodule MoonUI.Sidebar do
         <div class="flex h-full w-full flex-col">
           {render_slot(@inner_block)}
         </div>
-      </.sheet_content>
-    </.sheet>
+      </.drower_content>
+    </.drower>
     """
   end
 

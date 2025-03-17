@@ -11,7 +11,10 @@ defmodule MoonUI.Helpers do
     assigns
     |> assign(field: nil, id: assigns[:id] || field.id)
     |> assign(:errors, Enum.map(field.errors, &translate_error(&1)))
-    |> assign(:name, assigns[:name] || if(assigns[:multiple], do: field.name <> "[]", else: field.name))
+    |> assign(
+      :name,
+      assigns[:name] || if(assigns[:multiple], do: field.name <> "[]", else: field.name)
+    )
     |> assign(:value, assigns[:value] || field.value)
     |> prepare_assign()
   end
@@ -26,6 +29,20 @@ defmodule MoonUI.Helpers do
       end
 
     assign(assigns, value: value)
+  end
+
+  # Helper function to add event mappings
+  def add_event_mapping(map \\ %{}, assigns, event, key) do
+    if assigns[key] do
+      Map.put(map, event, assigns[key])
+    else
+      map
+    end
+  end
+
+  # Helper to encode data to JSON
+  def json(data) do
+    Phoenix.json_library().encode!(data)
   end
 
   # normalize_integer
@@ -82,7 +99,9 @@ defmodule MoonUI.Helpers do
 
   @spec side_variant(String.t(), String.t()) :: String.t()
   def side_variant(side, align \\ "center") do
-    Enum.map_join(%{side: side, align: align(align, side)}, " ", fn {key, value} -> @variants[key][value] end)
+    Enum.map_join(%{side: side, align: align(align, side)}, " ", fn {key, value} ->
+      @variants[key][value]
+    end)
   end
 
   # decide align class based on side
@@ -98,24 +117,26 @@ defmodule MoonUI.Helpers do
 
   @variants %{
     variant: %{
-      "fill" => "",
-      "tonal" => "moon-button-tonal",
-      "destructive" => "moon-button-destructive",
-      "outline" => "moon-button-outline",
-      "ghost" => "moon-button-ghost"
+      "default" => "bg-primary text-primary-foreground shadow hover:bg-primary/90",
+      "destructive" =>
+        "bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90",
+      "outline" =>
+        "border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground",
+      "secondary" => "bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80",
+      "ghost" => "hover:bg-accent hover:text-accent-foreground",
+      "link" => "text-primary underline-offset-4 hover:underline"
     },
     size: %{
-      "xs" => "moon-button-xs",
-      "sm" => "moon-button-sm",
-      "md" => "moon-button-md",
-      "lg" => "moon-button-lg",
-      "xl" => "moon-button-xl"
+      "default" => "h-9 px-4 py-2",
+      "sm" => "h-8 rounded-md px-3 text-xs",
+      "lg" => "h-10 rounded-md px-8",
+      "icon" => "h-9 w-9"
     }
   }
 
   @default_variants %{
-    variant: "fill",
-    size: "md"
+    variant: "default",
+    size: "default"
   }
 
   @doc """
@@ -129,11 +150,10 @@ defmodule MoonUI.Helpers do
 
     variation_classes = Enum.map_join(variants, " ", fn {key, value} -> @variants[key][value] end)
 
-    # shared_classes =
-    #   "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:ring-ring focus-visible:outline-none focus-visible:ring-1 disabled:pointer-events-none disabled:opacity-50"
+    shared_classes =
+      "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:ring-ring focus-visible:outline-none focus-visible:ring-1 disabled:pointer-events-none disabled:opacity-50"
 
-    # "#{shared_classes} #{variation_classes}"
-    "#{variation_classes}"
+    "#{shared_classes} #{variation_classes}"
   end
 
   @doc """
@@ -321,7 +341,7 @@ defmodule MoonUI.Helpers do
 
             Hint: you can set up the `error_translator_function` to route all errors to your application helpers:
 
-              config :Moon_ui, :error_translator_function, {MyAppWeb.CoreComponents, :translate_error}
+              config :moon_ui, :error_translator_function, {MyAppWeb.CoreComponents, :translate_error}
 
             Given value: #{inspect(value)}
 
@@ -336,7 +356,7 @@ defmodule MoonUI.Helpers do
   end
 
   defp get_translator_from_config do
-    case Application.get_env(:Moon_ui, :error_translator_function) do
+    case Application.get_env(:moon_ui, :error_translator_function) do
       {module, function} -> &apply(module, function, [&1])
       nil -> nil
     end

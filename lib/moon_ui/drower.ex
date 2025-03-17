@@ -1,20 +1,20 @@
-defmodule MoonUI.Sheet do
+defmodule MoonUI.Drower do
   @moduledoc """
-  Implement Sheet componet https://ui.shadcn.com/docs/components/sheet
+  Implement drower componet https://ui.shadcn.com/docs/components/sheet
 
   ## Example:
 
-      <.sheet show>
-        <.sheet_trigger target="test">
+      <.drower show>
+        <.drower_trigger target="test">
           <.button variant="outline">open</.button>
-        </.sheet_trigger>
-        <.sheet_content id="test" side="bottom">
-          <.sheet_header>
-            <.sheet_title>Edit profile</.sheet_title>
-            <.sheet_description>
+        </.drower_trigger>
+        <.drower_content id="test" side="start">
+          <.drower_header>
+            <.drower_title>Edit profile</.drower_title>
+            <.drower_description>
               Make changes to your profile here. Click save when you're done.
-            </.sheet_description>
-          </.sheet_header>
+            </.drower_description>
+          </.drower_header>
           <div class="grid gap-4 py-4">
             <div class="grid grid-cols-4 items-center gap-4">
               <.label for="name" class="text-right">
@@ -29,20 +29,20 @@ defmodule MoonUI.Sheet do
               <Input.input id="username" name="username" value="@peduarte" class="col-span-3" />
             </div>
           </div>
-          <.sheet_footer>
-            <.sheet_close target="test">
+          <.drower_footer>
+            <.drower_close target="test">
               <.button type="submit" phx-click="save">save changes</.button>
-            </.sheet_close>
-          </.sheet_footer>
-        </.sheet_content>
-      </.sheet>
+            </.drower_close>
+          </.drower_footer>
+        </.drower_content>
+      </.drower>
   """
   use MoonUI, :component
 
   attr :class, :string, default: "inline-block"
   slot :inner_block, required: true
 
-  def sheet(assigns) do
+  def drower(assigns) do
     ~H"""
     <div class={classes([@class])}>
       {render_slot(@inner_block)}
@@ -51,12 +51,12 @@ defmodule MoonUI.Sheet do
   end
 
   attr :class, :string, default: "inner-block"
-  attr :target, :string, required: true, doc: "The id of the sheet to open"
+  attr :target, :string, required: true, doc: "The id of the drower to open"
   slot :inner_block, required: true
 
-  def sheet_trigger(assigns) do
+  def drower_trigger(assigns) do
     ~H"""
-    <div class={classes([@class])} phx-click={JS.exec("phx-show-sheet", to: "#" <> @target)}>
+    <div class={classes([@class])} phx-click={JS.exec("phx-show-drower", to: "#" <> @target)}>
       {render_slot(@inner_block)}
     </div>
     """
@@ -64,12 +64,12 @@ defmodule MoonUI.Sheet do
 
   attr :class, :string, default: nil
 
-  defp sheet_overlay(assigns) do
+  defp drower_overlay(assigns) do
     ~H"""
     <div
       class={
         classes([
-          "sheet-overlay fixed hidden inset-0 z-50 bg-black/80",
+          "drower-overlay fixed hidden inset-0 z-50 bg-black/80",
           @class
         ])
       }
@@ -79,42 +79,43 @@ defmodule MoonUI.Sheet do
     """
   end
 
-  attr :id, :string, default: nil, doc: "The id of the sheet, this is the target of sheet_trigger"
+  attr :id, :string,
+    default: nil,
+    doc: "The id of the drower, this is the target of drower_trigger"
+
   attr :class, :string, default: nil
-  attr :side, :string, default: "right", values: ~w(left right top bottom), doc: "The side of the sheet"
+  attr :side, :string, default: "end", values: ~w(start end), doc: "The side of the drower"
   attr :rest, :global
   slot :inner_block, required: true
   slot :custom_close_btn, required: false
 
-  def sheet_content(assigns) do
+  def drower_content(assigns) do
     variant_class =
       case assigns.side do
-        "left" -> "inset-y-0 left-0 h-full w-3/4 border-r sm:max-w-sm"
-        "right" -> "inset-y-0 right-0 h-full w-3/4  border-l sm:max-w-sm"
-        "top" -> "inset-x-0 top-0 border-b"
-        "bottom" -> "inset-x-0 bottom-0 border-t"
+        "start" -> "inset-y-0 left-0 h-full w-3/4 border-r sm:max-w-sm"
+        "end" -> "inset-y-0 right-0 h-full w-3/4  border-l sm:max-w-sm"
       end
 
     assigns = assign(assigns, :variant_class, variant_class)
 
     ~H"""
     <div
-      class="sheet-content relative z-50"
+      class="drower-content relative z-50"
       id={@id}
-      phx-show-sheet={@id && show_sheet(@id, @side)}
-      phx-hide-sheet={@id && hide_sheet(@id, @side)}
+      phx-show-drower={@id && show_drower(@id, @side)}
+      phx-hide-drower={@id && hide_drower(@id, @side)}
       {@rest}
     >
-      <.sheet_overlay />
+      <.drower_overlay />
       <.focus_wrap
-        id={"sheet-#{@id}"}
-        phx-window-keydown={@id && JS.exec("phx-hide-sheet", to: "#" <> @id)}
+        id={"drower-#{@id}"}
+        phx-window-keydown={@id && JS.exec("phx-hide-drower", to: "#" <> @id)}
         phx-key="escape"
-        phx-click-away={@id && JS.exec("phx-hide-sheet", to: "#" <> @id)}
-        role="sheet"
+        phx-click-away={@id && JS.exec("phx-hide-drower", to: "#" <> @id)}
+        role="drower"
         class={
           classes([
-            "sheet-content-wrap hidden fixed z-50 bg-primary shadow-lg transition",
+            "drower-content-wrap hidden fixed z-50 bg-primary shadow-lg transition",
             @variant_class,
             @class
           ])
@@ -131,7 +132,7 @@ defmodule MoonUI.Sheet do
             <button
               type="button"
               class="ring-offset-background absolute top-4 right-4 rounded-sm opacity-70 transition-opacity hover:opacity-100 focus:ring-ring focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:pointer-events-none"
-              phx-click={hide_sheet(@id, @side)}
+              phx-click={hide_drower(@id, @side)}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -156,7 +157,7 @@ defmodule MoonUI.Sheet do
   attr :class, :string, default: nil
   slot :inner_block, required: true
 
-  def sheet_header(assigns) do
+  def drower_header(assigns) do
     ~H"""
     <div class={classes(["flex flex-col space-y-2 text-center sm:text-left", @class])}>
       {render_slot(@inner_block)}
@@ -167,7 +168,7 @@ defmodule MoonUI.Sheet do
   attr :class, :string, default: nil
   slot :inner_block, required: true
 
-  def sheet_title(assigns) do
+  def drower_title(assigns) do
     ~H"""
     <h3 class={classes(["text-lg font-semibold text-foreground", @class])}>
       {render_slot(@inner_block)}
@@ -178,7 +179,7 @@ defmodule MoonUI.Sheet do
   attr :class, :string, default: nil
   slot :inner_block, required: true
 
-  def sheet_description(assigns) do
+  def drower_description(assigns) do
     ~H"""
     <p class={classes(["text-sm text-muted-foreground", @class])}>
       {render_slot(@inner_block)}
@@ -189,7 +190,7 @@ defmodule MoonUI.Sheet do
   attr :class, :string, default: nil
   slot :inner_block, required: true
 
-  def sheet_footer(assigns) do
+  def drower_footer(assigns) do
     ~H"""
     <div class={classes(["flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2", @class])}>
       {render_slot(@inner_block)}
@@ -198,34 +199,32 @@ defmodule MoonUI.Sheet do
   end
 
   attr :class, :string, default: nil
-  attr :target, :string, required: true, doc: "The id of the sheet tag to close"
+  attr :target, :string, required: true, doc: "The id of the drower tag to close"
   slot :inner_block, required: true
 
-  def sheet_close(assigns) do
+  def drower_close(assigns) do
     ~H"""
-    <div class={classes(["", @class])} phx-click={JS.exec("phx-hide-sheet", to: "#" <> @target)}>
+    <div class={classes(["", @class])} phx-click={JS.exec("phx-hide-drower", to: "#" <> @target)}>
       {render_slot(@inner_block)}
     </div>
     """
   end
 
-  defp show_sheet(js \\ %JS{}, id, side) when is_binary(id) do
+  defp show_drower(js \\ %JS{}, id, side) when is_binary(id) do
     transition =
       case side do
-        "left" -> {"transition ease-in-out", "-translate-x-full", "translate-x-0"}
-        "right" -> {"transition ease-in-out", "translate-x-full", "translate-x-0"}
-        "top" -> {"transition ease-in-out", "-translate-y-full", "translate-y-0"}
-        "bottom" -> {"transition ease-in-out", "translate-y-full", "translate-y-0"}
+        "start" -> {"transition ease-in-out", "-translate-x-full", "translate-x-0"}
+        "end" -> {"transition ease-in-out", "translate-x-full", "translate-x-0"}
       end
 
     js
     |> JS.show(
-      to: "##{id} .sheet-overlay",
+      to: "##{id} .drower-overlay",
       transition: {"transition ease-in-out", "opacity-0", "opacity-100"},
       time: 600
     )
     |> JS.show(
-      to: "##{id} .sheet-content-wrap",
+      to: "##{id} .drower-content-wrap",
       transition: transition,
       time: 600
     )
@@ -233,22 +232,20 @@ defmodule MoonUI.Sheet do
     |> JS.focus_first(to: "##{id} .sheet-content-wrap")
   end
 
-  defp hide_sheet(js \\ %JS{}, id, side) do
+  defp hide_drower(js \\ %JS{}, id, side) do
     transition =
       case side do
-        "left" -> {"transition ease-in-out", "translate-x-0", "-translate-x-full"}
-        "right" -> {"transition ease-in-out", "translate-x-0", "translate-x-full"}
-        "top" -> {"transition ease-in-out", "translate-y-0", "-translate-y-full"}
-        "bottom" -> {"transition ease-in-out", "translate-y-0", "translate-y-full"}
+        "start" -> {"transition ease-in-out", "translate-x-0", "-translate-x-full"}
+        "end" -> {"transition ease-in-out", "translate-x-0", "translate-x-full"}
       end
 
     js
     |> JS.hide(
-      to: "##{id} .sheet-overlay",
+      to: "##{id} .drower-overlay",
       transition: {"transition ease-in-out", "opacity-100", "opacity-0"},
       time: 400
     )
-    |> JS.hide(to: "##{id} .sheet-content-wrap", transition: transition, time: 400)
+    |> JS.hide(to: "##{id} .drower-content-wrap", transition: transition, time: 400)
     |> JS.remove_class("overflow-hidden", to: "body")
     |> JS.pop_focus()
   end

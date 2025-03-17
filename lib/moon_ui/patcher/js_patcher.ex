@@ -1,4 +1,4 @@
-defmodule MoonUI.Patcher.JSPatcher do
+defmodule SaladUI.Patcher.JSPatcher do
   @moduledoc false
   def patch(js_file_path, code_to_add_file_path) do
     code_to_add = File.read!(code_to_add_file_path)
